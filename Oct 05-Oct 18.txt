@@ -1,0 +1,41 @@
+There are two main approaches that I will try:
+
+1. Use POS and parsing tree to extract possible name entities. It probably involves some prebuilt Libraries/Packages.
+
+2. Train LSTM-RNN/CNN, either at word level or character level.
+
+Issues that might be hard to cope with:
+It is very likely that we recognize many name entities that we are not interested in, such as journalist's name, some governor's name, etc.
+
+
+
+>>> Ian Ma, Oct 10 - Oct 18, 2019:
+
+Repos:
+Model: https://github.com/guillaumegenthial/tf_ner
+Dataset: https://github.com/synalp/NER
+Paper: End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF (https://arxiv.org/abs/1603.01354)
+
+--- Results: (Relatively short training, ~ 30 min, training accuracy: ~0.97, precision: ~0.89)
+
+Labels:
+PER: Person
+ORG: Organization
+LOC: Location
+MISC: everything other than the first 3 classes
+
+1. 002fcbe4-503c-400d-8cc0-77a395570ade.txt
+words: A military source who spoke to THISDAY, disclosed that the battle to uproot the insurgents from the town was led by the General Officer Commanding (GOC), 7 Division, General Lamidi Adeosun.
+preds: O O        O      O   O     O  B-ORG    O         O    O   O      O  O      O   O          O    O   O    O   O   O  O   B-ORG   I-ORG   I-ORG      I-ORG  O O         O       B-PER  I-PER
+
+2. 0b4ea4e0-fade-4d35-b449-c36e265795d3.txt
+words: Jos—General Officer Commanding 3 Armoured Division of the Nigerian Army,  Major General Jack  Nwaogbo, has again re-assured Nigerians that the Boko  Haram insurgency would soon be contained.
+preds: B-ORG       I-ORG   I-ORG      O B-ORG    I-ORG    O  O   B-MISC   I-MISC O     O       B-PER I-PER    O   O     O          B-PER     O    O   B-ORG I-ORG O          O     O    O  O
+
+3. 017326a6-80d1-44de-ad81-a72f47318254.txt
+words: They Chief of Army  Staff who was represented by the General Officer Commanding (GOC), 1 Mechanised Division of the Nigerian Army,  Kaduna, Maj-Gen. Adeniyi Oyebade however said that, all hands must be on deck to ensure proper training and upbringing of Nigerian children, believing that such will reduce to the barest minimal, security threats against the country.
+preds: O    O     O  B-ORG I-ORG O   O   O           O  O   B-ORG   I-ORG   I-ORG      I-ORG  O B-ORG      I-ORG    O  O   B-MISC   I-MISC I-MISC  O        B-PER   I-PER   O       O    O     O   O     O    O  O  O    O  O      O      O        O   O          O  B-MISC   O         O         O    O    O    O      O  O   O      O        O        O       O       O   O
+
+--- Observations:
+1. Works poorly when the organizations's name starts with a number. E.g., 1 Mechanised Division of the Nigerian Army (Result 3.)
+2. This model only have lables: PER ORG LOC MISC (MISC is for everything other than the first 3 classes). Therefore, it cannot classify titles, ranks, etc. The dataset is CONLL2003. If we switch to our dataset, it might improve.
