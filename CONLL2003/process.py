@@ -1,3 +1,6 @@
+# Used for CONLL2003 dataset processing
+# Ian Y. Ma
+
 import sys
 
 dataset_name = sys.argv[1] # Type in test / train / valid in CLI

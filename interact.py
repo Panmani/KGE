@@ -10,7 +10,7 @@ import tensorflow as tf
 
 from main import model_fn
 
-LINE = 'They Chief of Army Staff who was represented by the General Officer Commanding (GOC), 1 Mechanised Division of the Nigerian Army, Kaduna, Maj-Gen. Adeniyi Oyebade however said that, all hands must be on deck to ensure proper training and upbringing of Nigerian children, believing that such will reduce to the barest minimal, security threats against the country.'
+LINE = 'The programme was declared open by Major General Azugaku Tsota Umuru, Director of Administration, Defence Headquarters, on behalf of the Chief of Defence Staff, Air Marshall Oluseyin Petinrin.'
 DATADIR = 'CONLL2003'
 PARAMS = './results/params.json'
 MODELDIR = './results/model'
