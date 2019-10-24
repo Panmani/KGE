@@ -15,6 +15,10 @@ DATADIR = 'CONLL2003'
 PARAMS = './results/params.json'
 MODELDIR = './results/model'
 
+# Major General Fatai Alli, General Officer Commanding (GOC), 3 Division of the Nigerian Army, on Tuesday reiterated the successes recorded by troops in the fight against insurgents in far North eastern state of Adamawa.
+# Ground Truth:  ajor General
+# Predicted Labels: Officer Commanding GOC, Nigerian Army, North, Adamawa, 
+
 def get_sentence(doc, position):
     left = position[0]
     while left >= 0 and doc[left] != '\n':

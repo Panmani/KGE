@@ -66,6 +66,10 @@ if __name__ == '__main__':
                 # print('-----------------')
                 # print(sentence)
                 # print('Predicted Label: ', pred_name)
+                # print('True Labels: ', end = '')
+                # for true_name in ground_truth_names:
+                #     print(true_name, end = ', ')
+                # print('')
                 similar_false_positive_count += 1
 
         for true_name in ground_truth_names:
@@ -78,6 +82,11 @@ if __name__ == '__main__':
                 print('-----------------')
                 print(sentence)
                 print('Ground Truth: ', true_name)
+                print('Predicted Labels: ', end = '')
+                for pname in pred_names:
+                    print(pname, end = ', ')
+                print('')
+
                 similar_false_negative_count += 1
 
     print('\n>>>')
