@@ -1,0 +1,122 @@
+>>> Ian Ma, Oct 10 - Oct 18, 2019:
+
+--- To Do:
+There are two main approaches that I will try:
+
+1. Use POS and parsing tree to extract possible name entities. It probably involves some prebuilt Libraries/Packages.
+2. Train LSTM-RNN/CNN, either at word level or character level.
+
+Issues that might be hard to cope with:
+It is very likely that we recognize many name entities that we are not interested in, such as journalist's name, some governor's name, etc.
+
+Repos:
+Model: https://github.com/guillaumegenthial/tf_ner
+Dataset: https://github.com/synalp/NER
+Paper: End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF (https://arxiv.org/abs/1603.01354)
+
+--- Wrote: process.py for processing the CONLL2003 dataset
+    $ python3 interact.py
+
+--- Results: (Relatively short training, ~ 30 min, training accuracy: ~0.97, precision: ~0.89)
+
+Labels:
+PER: Person
+ORG: Organization
+LOC: Location
+MISC: everything other than the first 3 classes
+
+1. 002fcbe4-503c-400d-8cc0-77a395570ade.txt
+words: A military source who spoke to THISDAY, disclosed that the battle to uproot the insurgents from the town was led by the General Officer Commanding (GOC), 7 Division, General Lamidi Adeosun.
+preds: O O        O      O   O     O  B-ORG    O         O    O   O      O  O      O   O          O    O   O    O   O   O  O   B-ORG   I-ORG   I-ORG      I-ORG  O O         O       B-PER  I-PER
+
+2. 0b4ea4e0-fade-4d35-b449-c36e265795d3.txt
+words: Jos—General Officer Commanding 3 Armoured Division of the Nigerian Army,  Major General Jack  Nwaogbo, has again re-assured Nigerians that the Boko  Haram insurgency would soon be contained.
+preds: B-ORG       I-ORG   I-ORG      O B-ORG    I-ORG    O  O   B-MISC   I-MISC O     O       B-PER I-PER    O   O     O          B-PER     O    O   B-ORG I-ORG O          O     O    O  O
+
+3. 017326a6-80d1-44de-ad81-a72f47318254.txt
+words: They Chief of Army  Staff who was represented by the General Officer Commanding (GOC), 1 Mechanised Division of the Nigerian Army,  Kaduna, Maj-Gen. Adeniyi Oyebade however said that, all hands must be on deck to ensure proper training and upbringing of Nigerian children, believing that such will reduce to the barest minimal, security threats against the country.
+preds: O    O     O  B-ORG I-ORG O   O   O           O  O   B-ORG   I-ORG   I-ORG      I-ORG  O B-ORG      I-ORG    O  O   B-MISC   I-MISC I-MISC  O        B-PER   I-PER   O       O    O     O   O     O    O  O  O    O  O      O      O        O   O          O  B-MISC   O         O         O    O    O    O      O  O   O      O        O        O       O       O   O
+
+--- Observations:
+1. Works poorly when the organizations's name starts with a number. E.g., 1 Mechanised Division of the Nigerian Army (Result 3.)
+2. This model only have lables: PER ORG LOC MISC (MISC is for everything other than the first 3 classes). Therefore, it cannot classify titles, ranks, etc. The dataset is CONLL2003. If we switch to our dataset, it might improve.
+
+
+
+
+
+>>> Ian Ma, Oct 18 - Oct 24, 2019:
+
+--- To Do:
+1. Evaluate on our dataset using the same parameter.
+      Precision and recall, F score for only person and organizations.
+      Report cases: false positive, false negative.
+*2. Continue training on existing docs, also evaluate...
+*3. Automatic Content Extraction (ACE), inventory of name entities.
+    https://www.ldc.upenn.edu/collaborations/past-projects/ace
+
+--- Wrote: prep_eval.py eval.py
+    $ pip3 install 'gast==0.2.2'
+    $ python3 prep_eval.py
+    $ python3 eval.py
+
+--- Results:
+Precision:  0.25161290322580643
+Recall:  0.24309884238646481
+F1 score:  0.24728260869565213
+
+Similar Precision:  0.5751152073732719
+Similar Recall:  0.5842696629213483
+Similar F1 score:  0.5796562935438923
+
+--- Observations:
+1. Similar (model only catches a part of the name entity):
+    >
+    Last week will be remembered for a long time as one of the saddest in this nation’s history with respect to road accidents. On Sunday last week Minister of State for Labour Mr. James Ocholi, SAN, as well as his wife and son died in an accident along the Kaduna-Abuja road. A day later, Chief of Training and Operations of the Nigeria Army Major General Yusha’u Mahmood Abubakar died in a crash on the Maiduguri-Damaturu highway. Abubakar was the former Theatre Commander of Operation Zaman Lafiya Dole, the military operation to banish insurgents from the North East. Under his command, spectacular successes were recorded in the war against Boko Haram. Acting General Officer Commanding \[GOC\] the Army’s 3 Armoured Division Brigadier M.S.A. Aliyu was also injured in the same accident. In the same week, 18 people died in an accident along the Bauchi-Jos highway when their commercial bus crashed.
+    Ground Truth:  M.S.A. Aliyu
+    Predicted Label:  MSA Aliyu
+
+    >
+    Chukwu said: “Troops of 27 Task Force Brigade in conjunction with the Nigerian Air Force and Civilian Joint Task Force (CJTF) in the ongoing clearance operation destroyed another Boko Haram enclave.
+    Ground Truth:  27 Task Force Brigade
+    Predicted Label:  Task Force Brigade
+
+    >
+    General Officer Commanding Three Division, Major General Ebobowei Bona Awala, assured that the division will continue to work hand-in-hand with the various task forces in the areas of operations to ensure that piece is maintained and lives and property are secured in the region.
+    Ground Truth:  Ebobowei Bona Awala,
+    Predicted Label:  Bona Awala
+
+    >
+    Last week will be remembered for a long time as one of the saddest in this nation’s history with respect to road accidents. On Sunday last week Minister of State for Labour Mr. James Ocholi, SAN, as well as his wife and son died in an accident along the Kaduna-Abuja road. A day later, Chief of Training and Operations of the Nigeria Army Major General Yusha’u Mahmood Abubakar died in a crash on the Maiduguri-Damaturu highway. Abubakar was the former Theatre Commander of Operation Zaman Lafiya Dole, the military operation to banish insurgents from the North East. Under his command, spectacular successes were recorded in the war against Boko Haram. Acting General Officer Commanding \[GOC\] the Army’s 3 Armoured Division Brigadier M.S.A. Aliyu was also injured in the same accident. In the same week, 18 people died in an accident along the Bauchi-Jos highway when their commercial bus crashed.
+    Ground Truth:  Theatre Commander
+    Predicted Label:  Theatre Commander of Operation Zaman Lafiya Dole
+
+2. False positive:
+    >
+    In another development, the General Officer Commanding (GOC) 3 Division, Major-General Fatai Alli, said yesterday that Nigerian troops have recaptured almost all towns in Adamawa earlier held by the insurgents except Madagali, headquarters of Madagali Local Government Area.
+    Predicted Label:  Nigerian
+
+    >
+    In another development, the General Officer Commanding (GOC) 3 Division, Major-General Fatai Alli, said yesterday that Nigerian troops have recaptured almost all towns in Adamawa earlier held by the insurgents except Madagali, headquarters of Madagali Local Government Area.
+    Predicted Label:  Adamawa
+
+    >
+    In another development, the General Officer Commanding (GOC) 3 Division, Major-General Fatai Alli, said yesterday that Nigerian troops have recaptured almost all towns in Adamawa earlier held by the insurgents except Madagali, headquarters of Madagali Local Government Area.
+    Predicted Label:  Madagali
+
+    >
+    In another development, the General Officer Commanding (GOC) 3 Division, Major-General Fatai Alli, said yesterday that Nigerian troops have recaptured almost all towns in Adamawa earlier held by the insurgents except Madagali, headquarters of Madagali Local Government Area.
+    Predicted Label:  Madagali Local Government Area
+
+3. False Negative:
+    >
+    Acting G.O.C., 82 Division, Nigerian Army, Brig.-Gen. Ibrahim Attahiru, Igwe of Nike Enugu State, Igwe Julius Nnaji, and Commander, 82 Division, Nigerian Army Medical Services, Brig.-Gen. Austin Ogbe, during the provision of free medicare to the community in Enugu, recently.
+    Ground Truth:  Brig.-Gen.
+
+    >
+    Radio Nigeria Defence Correspondent reports that before his appointment as Director, Army Public Relations, General Laleye served as Commander, One Division Garrison, Kaduna, while the outgoing Director resumes duty as the Commander of the Thirteenth Brigade.
+    Ground Truth:  General
+
+    >
+    Similarly, the Chief of Training and Operations (Army), Major General DD Ahmadu led another team to Headquarters 27 Task Force Brigade, Buni Yadi, Yobe State, where they celebrated the Christmas with the troops.
+    Ground Truth:  Major General
