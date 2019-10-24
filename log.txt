@@ -112,7 +112,7 @@ Similar F1 score:  0.5796562935438923
     Predicted Label:  Boko-Haram
     True Labels: Buratai, Lt. Gen, Nigeria Army,
 
-3. False Negative:
+3. False Negative: ranks, titles are often not recognized since the model is not trained to do that yet.
     >
     In another development, the General Officer Commanding (GOC) 3 Division, Major-General Fatai Alli, said yesterday that Nigerian troops have recaptured almost all towns in Adamawa earlier held by the insurgents except Madagali, headquarters of Madagali Local Government Area.
     Ground Truth:  3 Division
@@ -126,4 +126,4 @@ Similar F1 score:  0.5796562935438923
     >
     Kaduna (Kaduna State) – The General Officer Commanding (GOC) 81 Division of the Nigerian Army, Maj.-Gen. Tamunomieibi Dibi, said 700 officers and soldiers would be deployed to Liberia on peace keeping mission.
     Ground Truth:  Maj.-Gen.
-    Predicted Labels: Kaduna Kaduna State – The General Officer Commanding GOC, Nigerian Army, Tamunomieibi Dibi, Liberia, 
+    Predicted Labels: Kaduna Kaduna State – The General Officer Commanding GOC, Nigerian Army, Tamunomieibi Dibi, Liberia,
