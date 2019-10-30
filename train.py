@@ -14,7 +14,7 @@ from tf_metrics import precision, recall, f1
 
 from masked_conv import masked_conv1d_and_max
 
-DATADIR = 'CONLL2003'
+DATADIR = 'SFM_STARTER'
 
 # Logging
 Path('results').mkdir(exist_ok=True)

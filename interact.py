@@ -8,7 +8,7 @@ import json
 
 import tensorflow as tf
 
-from main import model_fn
+from train import model_fn
 
 LINE = 'The programme was declared open by Major General Azugaku Tsota Umuru, Director of Administration, Defence Headquarters, on behalf of the Chief of Defence Staff, Air Marshall Oluseyin Petinrin.'
 DATADIR = 'CONLL2003'

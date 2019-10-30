@@ -1,21 +1,28 @@
 import pickle
 import string
 from difflib import SequenceMatcher
+import process
+import os
+import pprint
+pp = pprint.PrettyPrinter(indent=2)
+
+pickle_path = './SFM_STARTER'
+
+from process import label_mapping
+inv_label_mapping = {v: k for k, v in label_mapping.items()}
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
 if __name__ == '__main__':
+    with open(os.path.join(pickle_path, "dataset_sentences.pickle"),"rb") as pickle_file:
+        dataset_sentences = pickle.load(pickle_file)
+    with open(os.path.join(pickle_path, "dataset_labels.pickle"),"rb") as pickle_file:
+        dataset_labels = pickle.load(pickle_file)
     with open("sentence_pred_tags.pickle","rb") as pickle_in:
         sentence_pred_tags = pickle.load(pickle_in)
-    with open("dataset_labels.pickle","rb") as pickle_in:
-        dataset_labels = pickle.load(pickle_in)
-    with open("dataset_sentences.pickle","rb") as pickle_in:
-        dataset_sentences = pickle.load(pickle_in)
-
-    # print(dataset_labels)
-    # print(dataset_sentences)
-    # print(sentence_pred_tags)
+    with open(os.path.join(pickle_path, 'test.words.txt'), 'r') as test_text:
+        test_lines = test_text.readlines()
 
     true_positive_count = 0
     false_positive_count = 0
@@ -23,21 +30,32 @@ if __name__ == '__main__':
     similar_true_positive_count = 0
     similar_false_positive_count = 0
     similar_false_negative_count = 0
-    for sentence in sentence_pred_tags.keys():
+    for line in test_lines:
+        sentence = line.strip()
         id, s_position = dataset_sentences[sentence]
-        # print("=====================")
-        # print(sentence_pred_tags[sentence])
-        # print(dataset_labels[id][s_position])
-        ground_truth_names = []
-        for entry in dataset_labels[id][s_position]:
-            ground_truth_names.append(entry[3])
+        print('=================================================')
+        print("From file with id: ", id)
+        print("Sentence: ")
+        pp.pprint(sentence)
 
+        print('\n--------------Ground truth--------------')
+        ground_truth_names = []
+        for label in dataset_labels[id][s_position]:
+            ground_truth_names.append(process.get_name(sentence, label))
+            print(ground_truth_names[-1], "||||", label[1], "||||", label[2])
+        # print(ground_truth_names)
+
+        print('\n--------------Predicted labels--------------')
         pred_names = []
+        pred_tags = []
         for name_position in sentence_pred_tags[sentence].keys():
             pred_name = sentence[name_position[0]: name_position[1]]
-            exclude = set(string.punctuation)
-            pred_name_stripped = ''.join(ch for ch in pred_name if ch not in exclude)
-            pred_names.append(pred_name_stripped)
+            pred_names.append(pred_name)
+            pred_tags.append(sentence_pred_tags[sentence][name_position])
+            print(pred_names[-1], "||||", inv_label_mapping[pred_tags[-1]])
+            # exclude = set(string.punctuation)
+            # pred_name_stripped = ''.join(ch for ch in pred_name if ch not in exclude)
+            # pred_names.append(pred_name_stripped)
 
         for pred_name in pred_names:
             if pred_name in ground_truth_names:
@@ -75,19 +93,20 @@ if __name__ == '__main__':
         for true_name in ground_truth_names:
             has_similar = False
             for pred_name in pred_names:
-                if similar(true_name, pred_name) > 0.5:
+                if similar(true_name, pred_name) > 0.7:
                     has_similar = True
                     break
             if not has_similar:
-                print('-----------------')
-                print(sentence)
-                print('Ground Truth: ', true_name)
-                print('Predicted Labels: ', end = '')
-                for pname in pred_names:
-                    print(pname, end = ', ')
-                print('')
-
+                # print('-----------------')
+                # print(sentence)
+                # print('Ground Truth: ', true_name)
+                # print('Predicted Labels: ', end = '')
+                # for pname in pred_names:
+                #     print(pname, end = ', ')
+                # print('')
                 similar_false_negative_count += 1
+
+        print('\n\n')
 
     print('\n>>>')
     precision = true_positive_count / (false_positive_count + true_positive_count)
