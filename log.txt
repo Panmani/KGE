@@ -75,7 +75,7 @@ Examples: Oct_18_examples.txt
 
 
 
->>> Ian Ma, Oct 24 - Oct XX, 2019:
+>>> Ian Ma, Oct 24 - Oct 31, 2019:
 
 --- To Do:
 1. Tokenization
