@@ -121,6 +121,10 @@ https://github.com/security-force-monitor/nlp_starter_dataset/tree/master/other_
       $ python3 pred.py
       $ python3 eval.py
 
+  Data used for training:
+    1) 400 sentences from SFM starter dataset, but trained model often only recognize the first token of name entities of PER and ORG.
+    2) In addtion to the SFM starter dataset, I added the first 5000 sentences from CONLL2003 training data
+
 --- Results:
 Saving dict for global step 3472: acc = 0.92142266, f1 = 0.77824265, global_step = 3472, loss = 7.126516, precision = 0.7237354, recall = 0.84162897
 Saving 'checkpoint_path' summary for global step 3472: results/model/model.ckpt-3472
@@ -133,3 +137,9 @@ label_mapping = {'Person':       'PER',
                  'Organization': 'ORG',
                  'Title':        'TIT',
                  'Role':         'ROL'}
+
+--- Some thoughts:
+  1) I could have tried adding all CONLL2003 dataset, but given that our SFM dataset is relatively small,
+     I was worried that the model might underfit on SFM dataset and only capture the features in CONLL2003.
+  2) Using the additional SFM data might make the model only 'remember' all the name entities, losing the ability of generalization;
+  3) Since, currently, I am only using the sentences that contain name entities, the model is likely to perform worse on the whole document.
