@@ -143,3 +143,14 @@ label_mapping = {'Person':       'PER',
      I was worried that the model might underfit on SFM dataset and only capture the features in CONLL2003.
   2) Using the additional SFM data might make the model only 'remember' all the name entities, losing the ability of generalization;
   3) Since, currently, I am only using the sentences that contain name entities, the model is likely to perform worse on the whole document.
+
+
+
+
+
+>>> Ian Ma, Oct 31 - Nov XX, 2019:
+----- To Do:
+Mythili and Ian will revisit DeepDive one last time.
+Ian will use a tokenizer and then retrain his model using the list of known organizations.
+Mythili will finish training the NeuroNER model to also predict Roles, Ranks, and Titles using the same data split as Ian. We should then be able to directly compare results between the two models.
+Mythili and Ian will add each other to their private Github repos.
