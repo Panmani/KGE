@@ -149,8 +149,46 @@ label_mapping = {'Person':       'PER',
 
 
 >>> Ian Ma, Oct 31 - Nov XX, 2019:
+
 ----- To Do:
-Mythili and Ian will revisit DeepDive one last time.
-Ian will use a tokenizer and then retrain his model using the list of known organizations.
-Mythili will finish training the NeuroNER model to also predict Roles, Ranks, and Titles using the same data split as Ian. We should then be able to directly compare results between the two models.
-Mythili and Ian will add each other to their private Github repos.
+  1. Revisit DeepDive one last time.
+  2. Use a tokenizer and then retrain the model using the list of known organizations.
+  3. Mythili and Ian will add each other to their private Github repos.
+
+----- Wrote:
+  process.py: added code for loading name lists and misclassified sentences
+
+----- Results:
+  Previous model:
+    Precision:  0.39204545454545453
+    Recall:  0.43125
+    F1 score:  0.4107142857142857
+    Similar Precision:  0.8579545454545454
+    Similar Recall:  0.8830409356725146
+    Similar F1 score:  0.8703170028818444
+
+  With tokenization:
+    Precision:  0.7386363636363636
+    Recall:  0.7975460122699386
+    F1 score:  0.7669616519174041
+    Similar Precision:  0.8579545454545454
+    Similar Recall:  0.8830409356725146
+    Similar F1 score:  0.8703170028818444
+
+  With the two name lists and tokenization:
+  (Nov_3_examples.txt)
+    Precision:  0.7314285714285714
+    Recall:  0.7852760736196319
+    F1 score:  0.757396449704142
+    Similar Precision:  0.8571428571428571
+    Similar Recall:  0.872093023255814
+    Similar F1 score:  0.8645533141210374
+
+  With misclassified sentences, the two name lists and tokenization:
+  (Nov_6_examples.txt)
+    Precision:  0.7005347593582888
+    Recall:  0.808641975308642
+    F1 score:  0.7507163323782235
+    Similar Precision:  0.839572192513369
+    Similar Recall:  0.9181286549707602
+    Similar F1 score:  0.8770949720670391

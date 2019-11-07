@@ -47,12 +47,15 @@ if __name__ == '__main__':
         dataset_sentences = pickle.load(pickle_file)
     with open(os.path.join(pickle_path, "dataset_labels.pickle"),"rb") as pickle_file:
         dataset_labels = pickle.load(pickle_file)
-    # pp.pprint(dataset_labels)
-    # pp.pprint(dataset_sentences)
+
+    with open(os.path.join(DATADIR, "test.words.txt")) as test_file:
+        test_sentences = test_file.readlines()
+    test_sentences = [sentence.strip() for sentence in test_sentences]
 
     sentence_pred_tags = {}
     test_count = 1
-    for sentence in dataset_sentences.keys():
+    for sentence in test_sentences:
+        print("--- Progress: ", test_count, "/", len(test_sentences))
         if sentence not in sentence_pred_tags:
             sentence_pred_tags[sentence] = {}
 

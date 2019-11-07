@@ -4,18 +4,24 @@ import functools
 import json
 import pickle
 import tensorflow as tf
+import csv
+
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
 
 dir_path = './SFM_STARTER/annotated_sources'
 pickle_path = './SFM_STARTER'
 out_path = './SFM_STARTER'
+name_list_path = './SFM_STARTER/other_data'
+conll2003_path = 'CONLL2003'
 
 label_mapping = {'Person':       'PER',
                  'Rank':         'RAN',
                  'Organization': 'ORG',
                  'Title':        'TIT',
-                 'Role':         'ROL'}
+                 'Role':         'ROL',
+                 'Location':     'LOC'}
+
 
 def get_sentence(doc, position):
     left = position[0]
@@ -46,7 +52,7 @@ def get_tag(sentence, labels, position):
 
 
 if __name__ == '__main__':
-    # ====================== Read SFM text and annotation files ======================
+    # ====================== Read dataset ======================
     all_docs = [f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))]
     doc_ids = []
     for doc in all_docs:
@@ -90,10 +96,13 @@ if __name__ == '__main__':
     # pp.pprint(dataset_sentences)
     with open(os.path.join(pickle_path, "dataset_labels.pickle"),"wb") as pickle_file:
         pickle.dump(dataset_labels, pickle_file)
+    print("Written dataset_labels.pickle")
     with open(os.path.join(pickle_path, "dataset_sentences.pickle"),"wb") as pickle_file:
         pickle.dump(dataset_sentences, pickle_file)
+    print("Written dataset_sentences.pickle")
 
     # ====================== Generate training files ======================
+    # SFM starter dataset
     # len(dataset_sentences) == 478
     train_text = os.path.join(out_path, 'train.words.txt')
     train_tags = os.path.join(out_path, 'train.tags.txt')
@@ -125,7 +134,7 @@ if __name__ == '__main__':
         if line_count < 400:
             train_text_file.write(sentence + '\n')
             train_tags_file.write(tag_line[:-1] + '\n')
-        elif line_count < 450:
+        elif line_count < 435:
             valid_text_file.write(sentence + '\n')
             valid_tags_file.write(tag_line[:-1] + '\n')
         else:
@@ -133,9 +142,61 @@ if __name__ == '__main__':
             test_tags_file.write(tag_line[:-1] + '\n')
         line_count += 1
 
+    # Name list
+    with open(os.path.join(name_list_path, 'ng_unit_names_and_other_names_collapsed_20191024.tsv')) as tsvfile:
+        reader = csv.reader(tsvfile, delimiter='\t')
+        ng_units = []
+        for row in reader:
+            ng_units.append(row[0])
+    with open(os.path.join(name_list_path, 'dos_fmtrpt_nigeria_units.tsv')) as tsvfile:
+        reader = csv.reader(tsvfile, delimiter='\t')
+        nigeria_units = []
+        for row in reader:
+            nigeria_units.append(row[0])
+
+    B_ORG_tag = 'B-' + label_mapping['Organization'] + ' '
+    I_ORG_tag = 'I-' + label_mapping['Organization'] + ' '
+    for name in ng_units:
+        name_split = name.split()
+        tag_line = B_ORG_tag + I_ORG_tag * (len(name_split) - 1)
+        train_text_file.write(name + '\n')
+        train_tags_file.write(tag_line[:-1] + '\n')
+    for name in nigeria_units:
+        name_split = name.split()
+        tag_line = B_ORG_tag + I_ORG_tag * (len(name_split) - 1)
+        train_text_file.write(name + '\n')
+        train_tags_file.write(tag_line[:-1] + '\n')
+
+    # CONLL2003
+    N = 5000
+    with open(os.path.join(conll2003_path, "train.words.txt")) as train_file:
+        words_lines = [next(train_file) for x in range(N)]
+    with open(os.path.join(conll2003_path, "train.tags.txt")) as train_file:
+        tags_lines = [next(train_file) for x in range(N)]
+
+    for idx in range(N):
+        train_text_file.write(words_lines[idx])
+        train_tags_file.write(tags_lines[idx])
+
+    # Additional data
+    additional_data = {"Commander of Supply and Transport": "Title",
+                     "Zaruwa": "Person"}
+    repeat_num = 5
+    for name in additional_data.keys():
+        name_split = name.split()
+        B_TAG = 'B-' + label_mapping[additional_data[name]] + " "
+        I_TAG = 'I-' + label_mapping[additional_data[name]] + " "
+        tag_line = B_TAG + I_TAG * (len(name_split) - 1)
+        words_string = (name + '\n') * repeat_num
+        tags_string = (tag_line[:-1] + '\n') * repeat_num
+        train_text_file.write(words_string)
+        train_tags_file.write(tags_string)
+
+
     train_text_file.close()
     train_tags_file.close()
     valid_text_file.close()
     valid_tags_file.close()
     test_text_file.close()
     test_tags_file.close()
+    print("Written train, valid and test files")

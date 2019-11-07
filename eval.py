@@ -5,14 +5,23 @@ import process
 import os
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
-
-pickle_path = './SFM_STARTER'
-
+import spacy
+nlp = spacy.load("en_core_web_sm")
 from process import label_mapping
 inv_label_mapping = {v: k for k, v in label_mapping.items()}
 
+pickle_path = './SFM_STARTER'
+
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
+
+def tokenizer(name):
+    doc = nlp(name)
+    tokens = []
+    for token in doc:
+        if token.text not in string.punctuation:
+            tokens.append(token.text)
+    return ' '.join(tokens)
 
 if __name__ == '__main__':
     with open(os.path.join(pickle_path, "dataset_sentences.pickle"),"rb") as pickle_file:
@@ -41,7 +50,8 @@ if __name__ == '__main__':
         print('\n--------------Ground truth--------------')
         ground_truth_names = []
         for label in dataset_labels[id][s_position]:
-            ground_truth_names.append(process.get_name(sentence, label))
+            gt_name = process.get_name(sentence, label)
+            ground_truth_names.append(tokenizer(gt_name))
             print(ground_truth_names[-1], "||||", label[1], "||||", label[2])
         # print(ground_truth_names)
 
@@ -50,9 +60,10 @@ if __name__ == '__main__':
         pred_tags = []
         for name_position in sentence_pred_tags[sentence].keys():
             pred_name = sentence[name_position[0]: name_position[1]]
-            pred_names.append(pred_name)
+            pred_names.append(tokenizer(pred_name))
+            # pred_names.append(pred_name)
             pred_tags.append(sentence_pred_tags[sentence][name_position])
-            print(pred_names[-1], "||||", inv_label_mapping[pred_tags[-1]])
+            print(pred_names[-1], "||||", inv_label_mapping[pred_tags[-1]], "||||", name_position)
             # exclude = set(string.punctuation)
             # pred_name_stripped = ''.join(ch for ch in pred_name if ch not in exclude)
             # pred_names.append(pred_name_stripped)
