@@ -148,7 +148,7 @@ label_mapping = {'Person':       'PER',
 
 
 
->>> Ian Ma, Oct 31 - Nov XX, 2019:
+>>> Ian Ma, Oct 31 - Nov 12, 2019:
 
 ----- To Do:
   1. Revisit DeepDive one last time.
@@ -192,3 +192,55 @@ label_mapping = {'Person':       'PER',
     Similar Precision:  0.839572192513369
     Similar Recall:  0.9181286549707602
     Similar F1 score:  0.8770949720670391
+
+
+
+
+
+>>> Ian Ma, Nov 12 - Nov 14, 2019:
+
+----- TO DO:
+Report precision and recall for each class
+
+----- Wrote:
+eval_class.py
+
+----- Result:
+Nov_12_examples.txt
+
+A summary of the report:
+
+=============== Class:  Person ===============
+	tp, fp, fn counts:  [35, 9, 3]
+	Precision:  0.7954545454545454
+	Recall:  0.9210526315789473
+	F1 score:  0.853658536585366
+
+=============== Class:  Rank ===============
+	tp, fp, fn counts:  [32, 7, 3]
+	Precision:  0.8205128205128205
+	Recall:  0.9142857142857143
+	F1 score:  0.8648648648648649
+
+=============== Class:  Organization ===============
+	tp, fp, fn counts:  [37, 26, 14]
+	Precision:  0.5873015873015873
+	Recall:  0.7254901960784313
+	F1 score:  0.6491228070175439
+
+=============== Class:  Title ===============
+	tp, fp, fn counts:  [16, 10, 13]
+	Precision:  0.6153846153846154
+	Recall:  0.5517241379310345
+	F1 score:  0.5818181818181818
+
+=============== Class:  Role ===============
+	tp, fp, fn counts:  [6, 8, 3]
+	Precision:  0.42857142857142855
+	Recall:  0.6666666666666666
+	F1 score:  0.5217391304347826
+
+=============== All classes ===============
+	Precision:  0.6737967914438503
+	Recall:  0.7777777777777778
+	F1 score:  0.7220630372492837
