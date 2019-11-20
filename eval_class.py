@@ -9,6 +9,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 from process import label_mapping
 inv_label_mapping = {v: k for k, v in label_mapping.items()}
+inv_label_mapping['RAT'] = 'Rank/Title'
 
 pickle_path = './SFM_STARTER'
 
@@ -33,10 +34,10 @@ if __name__ == '__main__':
     with open(os.path.join(pickle_path, 'test.words.txt'), 'r') as test_text:
         test_lines = test_text.readlines()
 
-    true_positive_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
-    false_positive_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
-    false_negative_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
-    false_entities = {"PER": [[], []], "RAN": [[], []], "ORG": [[], []], "TIT": [[], []], "ROL": [[], []], "LOC": [[], []]} # [list of fp, list of fn]
+    true_positive_count = {"PER": 0, "RAT": 0, "ORG": 0, "ROL": 0, "LOC": 0}
+    false_positive_count = {"PER": 0, "RAT": 0, "ORG": 0, "ROL": 0, "LOC": 0}
+    false_negative_count = {"PER": 0, "RAT": 0, "ORG": 0, "ROL": 0, "LOC": 0}
+    false_entities = {"PER": [[], []], "RAT": [[], []], "ORG": [[], []], "ROL": [[], []], "LOC": [[], []]} # [list of fp, list of fn]
     # similar_true_positive_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
     # similar_false_positive_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
     # similar_false_negative_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
@@ -81,7 +82,7 @@ if __name__ == '__main__':
                     continue
 
             false_positive_count[pred_tags[idx]] += 1
-            print("\t", pred_name, "||||", pred_tags[idx])
+            print("\t", pred_name, "||||", inv_label_mapping[pred_tags[idx]])
             false_entities[pred_tags[idx]][0].append((pred_name, pred_tags[idx]))
 
         print('>>> False-negatives:')
@@ -89,13 +90,13 @@ if __name__ == '__main__':
             true_tag = ground_truth_tags[ground_truth_names.index(true_name)]
             if true_name not in pred_names:
                 false_negative_count[true_tag] += 1
-                print("\t", true_name, "||||", true_tag)
+                print("\t", true_name, "||||", inv_label_mapping[true_tag])
                 false_entities[true_tag][1].append((true_name, true_tag))
             else:
                 pred_tag = pred_tags[pred_names.index(true_name)]
                 if true_tag != pred_tag:
                     false_negative_count[true_tag] += 1
-                    print("\t", true_name, "||||", true_tag)
+                    print("\t", true_name, "||||", inv_label_mapping[true_tag])
                     false_entities[true_tag][1].append((true_name, true_tag))
 
 

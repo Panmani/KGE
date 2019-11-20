@@ -15,10 +15,17 @@ out_path = './SFM_STARTER'
 name_list_path = './SFM_STARTER/other_data'
 conll2003_path = 'CONLL2003'
 
+# label_mapping = {'Person':       'PER',
+#                  'Rank':         'RAN',
+#                  'Organization': 'ORG',
+#                  'Title':        'TIT',
+#                  'Role':         'ROL',
+#                  'Location':     'LOC'}
+
 label_mapping = {'Person':       'PER',
-                 'Rank':         'RAN',
+                 'Rank':         'RAT',
                  'Organization': 'ORG',
-                 'Title':        'TIT',
+                 'Title':        'RAT',
                  'Role':         'ROL',
                  'Location':     'LOC'}
 
@@ -118,6 +125,8 @@ if __name__ == '__main__':
     test_tags_file = open(test_tags,'w')
 
     line_count = 0
+    valid_range = [0, 100]
+    test_range_start = 400
     for sentence in dataset_sentences.keys():
         id, s_position = dataset_sentences[sentence]
         labels = dataset_labels[id][s_position]
@@ -131,15 +140,15 @@ if __name__ == '__main__':
             tag_line += get_tag(sentence, labels, position) + ' '
             cur_idx += len(token) + 1
 
-        if line_count < 400:
-            train_text_file.write(sentence + '\n')
-            train_tags_file.write(tag_line[:-1] + '\n')
-        elif line_count < 435:
+        if valid_range[0] <= line_count and line_count < valid_range[1]:
             valid_text_file.write(sentence + '\n')
             valid_tags_file.write(tag_line[:-1] + '\n')
-        else:
+        elif line_count >= test_range_start:
             test_text_file.write(sentence + '\n')
             test_tags_file.write(tag_line[:-1] + '\n')
+        else:
+            train_text_file.write(sentence + '\n')
+            train_tags_file.write(tag_line[:-1] + '\n')
         line_count += 1
 
     # Name list
@@ -168,29 +177,29 @@ if __name__ == '__main__':
         train_tags_file.write(tag_line[:-1] + '\n')
 
     # CONLL2003
-    N = 5000
+    N_range = [5000, 10000]
     with open(os.path.join(conll2003_path, "train.words.txt")) as train_file:
-        words_lines = [next(train_file) for x in range(N)]
+        words_lines = [next(train_file) for x in range(N_range[1])]
     with open(os.path.join(conll2003_path, "train.tags.txt")) as train_file:
-        tags_lines = [next(train_file) for x in range(N)]
+        tags_lines = [next(train_file) for x in range(N_range[1])]
 
-    for idx in range(N):
+    for idx in range(N_range[0], N_range[1]):
         train_text_file.write(words_lines[idx])
         train_tags_file.write(tags_lines[idx])
 
     # Additional data
-    additional_data = {"Commander of Supply and Transport": "Title",
-                     "Zaruwa": "Person"}
-    repeat_num = 5
-    for name in additional_data.keys():
-        name_split = name.split()
-        B_TAG = 'B-' + label_mapping[additional_data[name]] + " "
-        I_TAG = 'I-' + label_mapping[additional_data[name]] + " "
-        tag_line = B_TAG + I_TAG * (len(name_split) - 1)
-        words_string = (name + '\n') * repeat_num
-        tags_string = (tag_line[:-1] + '\n') * repeat_num
-        train_text_file.write(words_string)
-        train_tags_file.write(tags_string)
+    # additional_data = {"Commander of Supply and Transport": "Title",
+    #                  "Zaruwa": "Person"}
+    # repeat_num = 5
+    # for name in additional_data.keys():
+    #     name_split = name.split()
+    #     B_TAG = 'B-' + label_mapping[additional_data[name]] + " "
+    #     I_TAG = 'I-' + label_mapping[additional_data[name]] + " "
+    #     tag_line = B_TAG + I_TAG * (len(name_split) - 1)
+    #     words_string = (name + '\n') * repeat_num
+    #     tags_string = (tag_line[:-1] + '\n') * repeat_num
+    #     train_text_file.write(words_string)
+    #     train_tags_file.write(tags_string)
 
 
     train_text_file.close()

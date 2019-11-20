@@ -200,13 +200,13 @@ if __name__ == '__main__':
     # Estimator, train and evaluate
     train_inpf = functools.partial(input_fn, fwords('train'), ftags('train'),
                                    params, shuffle_and_repeat=True)
-    eval_inpf = functools.partial(input_fn, fwords('test'), ftags('test'))
+    eval_inpf = functools.partial(input_fn, fwords('valid'), ftags('valid'))
 
     cfg = tf.estimator.RunConfig(save_checkpoints_secs=120)
     estimator = tf.estimator.Estimator(model_fn, 'results/model', cfg, params)
     Path(estimator.eval_dir()).mkdir(parents=True, exist_ok=True)
     hook = tf.contrib.estimator.stop_if_no_decrease_hook(
-        estimator, 'f1', 500, min_steps=8000, run_every_secs=120)
+        estimator, 'f1', 500, min_steps=8000, run_every_secs=60)
     train_spec = tf.estimator.TrainSpec(input_fn=train_inpf, hooks=[hook])
     eval_spec = tf.estimator.EvalSpec(input_fn=eval_inpf, throttle_secs=120)
     tf.estimator.train_and_evaluate(estimator, train_spec, eval_spec)
