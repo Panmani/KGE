@@ -23,10 +23,10 @@ conll2003_path = 'CONLL2003'
 #                  'Location':     'LOC'}
 
 label_mapping = {'Person':       'PER',
-                 'Rank':         'RAT',
+                 'Rank':         'RNK',
                  'Organization': 'ORG',
-                 'Title':        'RAT',
-                 'Role':         'ROL',
+                 'Title':        'TOR',
+                 'Role':         'TOR',
                  'Location':     'LOC'}
 
 
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     test_tags_file = open(test_tags,'w')
 
     line_count = 0
-    valid_range = [0, 100]
+    valid_range = [200, 300]
     test_range_start = 400
     for sentence in dataset_sentences.keys():
         id, s_position = dataset_sentences[sentence]

@@ -262,30 +262,37 @@ A summary of the report:
   Nov_20_examples.txt
 
 =============== Class:  Person ===============
-	tp, fp, fn counts:  [87, 14, 6]
-	Precision:  0.8613861386138614
-	Recall:  0.9354838709677419
-	F1 score:  0.8969072164948453
+	tp, fp, fn counts:  [79, 11, 14]
+	Precision:  0.8777777777777778
+	Recall:  0.8494623655913979
+	F1 score:  0.8633879781420766
 
-=============== Class:  Rank/Title ===============
-	tp, fp, fn counts:  [134, 28, 28]
-	Precision:  0.8271604938271605
-	Recall:  0.8271604938271605
-	F1 score:  0.8271604938271605
+=============== Class:  Rank ===============
+	tp, fp, fn counts:  [73, 9, 18]
+	Precision:  0.8902439024390244
+	Recall:  0.8021978021978022
+	F1 score:  0.8439306358381502
 
 =============== Class:  Organization ===============
-	tp, fp, fn counts:  [95, 42, 38]
-	Precision:  0.6934306569343066
-	Recall:  0.7142857142857143
-	F1 score:  0.7037037037037037
+	tp, fp, fn counts:  [97, 35, 35]
+	Precision:  0.7348484848484849
+	Recall:  0.7348484848484849
+	F1 score:  0.7348484848484849
 
-=============== Class:  Role ===============
-	tp, fp, fn counts:  [26, 9, 12]
-	Precision:  0.7428571428571429
-	Recall:  0.6842105263157895
-	F1 score:  0.7123287671232877
+=============== Class:  Title/Role ===============
+	tp, fp, fn counts:  [86, 18, 23]
+	Precision:  0.8269230769230769
+	Recall:  0.7889908256880734
+	F1 score:  0.8075117370892019
 
 =============== All classes ===============
-	Precision:  0.7862068965517242
-	Recall:  0.8028169014084507
-	F1 score:  0.7944250871080141
+	Precision:  0.821078431372549
+	Recall:  0.788235294117647
+	F1 score:  0.8043217286914764
+
+
+
+1. retrain, add misclassified to training
+2. unknown words
+3. sample annotations
+4. relation detection tools

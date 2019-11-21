@@ -9,7 +9,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 from process import label_mapping
 inv_label_mapping = {v: k for k, v in label_mapping.items()}
-inv_label_mapping['RAT'] = 'Rank/Title'
+inv_label_mapping['TOR'] = 'Title/Role'
 
 pickle_path = './SFM_STARTER'
 
@@ -34,10 +34,10 @@ if __name__ == '__main__':
     with open(os.path.join(pickle_path, 'test.words.txt'), 'r') as test_text:
         test_lines = test_text.readlines()
 
-    true_positive_count = {"PER": 0, "RAT": 0, "ORG": 0, "ROL": 0, "LOC": 0}
-    false_positive_count = {"PER": 0, "RAT": 0, "ORG": 0, "ROL": 0, "LOC": 0}
-    false_negative_count = {"PER": 0, "RAT": 0, "ORG": 0, "ROL": 0, "LOC": 0}
-    false_entities = {"PER": [[], []], "RAT": [[], []], "ORG": [[], []], "ROL": [[], []], "LOC": [[], []]} # [list of fp, list of fn]
+    true_positive_count = {"PER": 0, "RNK": 0, "ORG": 0, "TOR": 0, "LOC": 0}
+    false_positive_count = {"PER": 0, "RNK": 0, "ORG": 0, "TOR": 0, "LOC": 0}
+    false_negative_count = {"PER": 0, "RNK": 0, "ORG": 0, "TOR": 0, "LOC": 0}
+    false_entities = {"PER": [[], []], "RNK": [[], []], "ORG": [[], []], "TOR": [[], []], "LOC": [[], []]} # [list of fp, list of fn]
     # similar_true_positive_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
     # similar_false_positive_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
     # similar_false_negative_count = {"PER": 0, "RAN": 0, "ORG": 0, "TIT": 0, "ROL": 0, "LOC": 0}
@@ -144,10 +144,10 @@ if __name__ == '__main__':
         print('\tPrecision: ', precision)
         print('\tRecall: ', recall)
         print('\tF1 score: ', f1_score)
-        print('\n\t>>> False positive:')
-        pp.pprint(false_entities[tag][0])
-        print('\n\t>>> False negative:')
-        pp.pprint(false_entities[tag][1])
+        # print('\n\t>>> False positive:')
+        # pp.pprint(false_entities[tag][0])
+        # print('\n\t>>> False negative:')
+        # pp.pprint(false_entities[tag][1])
         # similar_precision = similar_true_positive_count[tag] / (similar_true_positive_count[tag] + similar_false_positive_count[tag])
         # similar_recall = similar_true_positive_count[tag] / (similar_true_positive_count[tag] + similar_false_negative_count[tag])
         # similar_f1_score = 2. / (1. / similar_precision + 1. / similar_recall)
