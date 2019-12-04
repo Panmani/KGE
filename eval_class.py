@@ -7,22 +7,10 @@ import pprint
 pp = pprint.PrettyPrinter(indent=2)
 import spacy
 nlp = spacy.load("en_core_web_sm")
-from process import label_mapping
-inv_label_mapping = {v: k for k, v in label_mapping.items()}
-inv_label_mapping['TOR'] = 'Title/Role'
+from eval import *
+from process import label_mapping, inv_label_mapping
 
 pickle_path = './SFM_STARTER'
-
-def similar(a, b):
-    return SequenceMatcher(None, a, b).ratio()
-
-def tokenizer(name):
-    doc = nlp(name)
-    tokens = []
-    for token in doc:
-        if token.text not in string.punctuation:
-            tokens.append(token.text)
-    return ' '.join(tokens)
 
 if __name__ == '__main__':
     with open(os.path.join(pickle_path, "dataset_sentences.pickle"),"rb") as pickle_file:

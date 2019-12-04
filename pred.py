@@ -41,17 +41,7 @@ def correct_token_position(sentence, query_idx, word):
             return (right_idx, right_idx + len(word))
     return None
 
-
-if __name__ == '__main__':
-    with open(os.path.join(pickle_path, "dataset_sentences.pickle"),"rb") as pickle_file:
-        dataset_sentences = pickle.load(pickle_file)
-    with open(os.path.join(pickle_path, "dataset_labels.pickle"),"rb") as pickle_file:
-        dataset_labels = pickle.load(pickle_file)
-
-    with open(os.path.join(DATADIR, "test.words.txt")) as test_file:
-        test_sentences = test_file.readlines()
-    test_sentences = [sentence.strip() for sentence in test_sentences]
-
+def build_pred_dict(test_sentences):
     sentence_pred_tags = {}
     test_count = 1
     for sentence in test_sentences:
@@ -81,6 +71,20 @@ if __name__ == '__main__':
             cur_idx += len(word) + 1
             prev_tag = tag
         test_count += 1
+
+    return sentence_pred_tags
+
+if __name__ == '__main__':
+    with open(os.path.join(pickle_path, "dataset_sentences.pickle"),"rb") as pickle_file:
+        dataset_sentences = pickle.load(pickle_file)
+    with open(os.path.join(pickle_path, "dataset_labels.pickle"),"rb") as pickle_file:
+        dataset_labels = pickle.load(pickle_file)
+
+    with open(os.path.join(DATADIR, "test.words.txt")) as test_file:
+        test_sentences = test_file.readlines()
+    test_sentences = [sentence.strip() for sentence in test_sentences]
+
+    sentence_pred_tags = build_pred_dict(test_sentences)
 
     with open("sentence_pred_tags.pickle","wb") as pickle_out:
         pickle.dump(sentence_pred_tags, pickle_out)

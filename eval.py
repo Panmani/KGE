@@ -7,10 +7,7 @@ import pprint
 pp = pprint.PrettyPrinter(indent=2)
 import spacy
 nlp = spacy.load("en_core_web_sm")
-from process import label_mapping
-inv_label_mapping = {v: k for k, v in label_mapping.items()}
-inv_label_mapping['RAT'] = 'Rank/Title'
-print(inv_label_mapping)
+from process import inv_label_mapping
 
 pickle_path = './SFM_STARTER'
 

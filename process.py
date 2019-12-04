@@ -29,6 +29,9 @@ label_mapping = {'Person':       'PER',
                  'Role':         'TOR',
                  'Location':     'LOC'}
 
+inv_label_mapping = {v: k for k, v in label_mapping.items()}
+inv_label_mapping['TOR'] = 'Title_Role'
+
 
 def get_sentence(doc, position):
     left = position[0]
@@ -125,7 +128,7 @@ if __name__ == '__main__':
     test_tags_file = open(test_tags,'w')
 
     line_count = 0
-    valid_range = [200, 300]
+    valid_range = [300, 400]
     test_range_start = 400
     for sentence in dataset_sentences.keys():
         id, s_position = dataset_sentences[sentence]

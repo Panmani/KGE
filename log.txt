@@ -261,38 +261,87 @@ A summary of the report:
 ----- Results:
   Nov_20_examples.txt
 
-=============== Class:  Person ===============
-	tp, fp, fn counts:  [79, 11, 14]
-	Precision:  0.8777777777777778
-	Recall:  0.8494623655913979
-	F1 score:  0.8633879781420766
+  =============== Class:  Person ===============
+  	tp, fp, fn counts:  [87, 13, 6]
+  	Precision:  0.87
+  	Recall:  0.9354838709677419
+  	F1 score:  0.9015544041450777
 
-=============== Class:  Rank ===============
-	tp, fp, fn counts:  [73, 9, 18]
-	Precision:  0.8902439024390244
-	Recall:  0.8021978021978022
-	F1 score:  0.8439306358381502
+  =============== Class:  Rank ===============
+  	tp, fp, fn counts:  [80, 14, 11]
+  	Precision:  0.851063829787234
+  	Recall:  0.8791208791208791
+  	F1 score:  0.8648648648648649
 
-=============== Class:  Organization ===============
-	tp, fp, fn counts:  [97, 35, 35]
-	Precision:  0.7348484848484849
-	Recall:  0.7348484848484849
-	F1 score:  0.7348484848484849
+  =============== Class:  Organization ===============
+  	tp, fp, fn counts:  [103, 33, 31]
+  	Precision:  0.7573529411764706
+  	Recall:  0.7686567164179104
+  	F1 score:  0.762962962962963
 
-=============== Class:  Title/Role ===============
-	tp, fp, fn counts:  [86, 18, 23]
-	Precision:  0.8269230769230769
-	Recall:  0.7889908256880734
-	F1 score:  0.8075117370892019
+  =============== Class:  Title_Role ===============
+  	tp, fp, fn counts:  [85, 20, 23]
+  	Precision:  0.8095238095238095
+  	Recall:  0.7870370370370371
+  	F1 score:  0.7981220657276995
 
-=============== All classes ===============
-	Precision:  0.821078431372549
-	Recall:  0.788235294117647
-	F1 score:  0.8043217286914764
+  =============== All classes ===============
+  	Precision:  0.8160919540229885
+  	Recall:  0.8333333333333334
+  	F1 score:  0.8246225319396051
 
 
 
-1. retrain, add misclassified to training
-2. unknown words
-3. sample annotations
-4. relation detection tools
+
+
+>>> Ian Ma, Nov 14 - Dec 3, 2019:
+----- TO DO:
+  1. Retrain, add misclassified to training
+  2. Unknown words
+  3. Relation extraction tools
+  4. Sample annotations
+
+----- Wrote:
+  Modified: process.py, eval.py, eval_class.py, pred.py
+  Added: relation.py
+
+----- Results:
+  1. 	Retrained model:
+    > Nov_20_examples.txt
+    =============== Class:  Person ===============
+    	tp, fp, fn counts:  [87, 13, 6]
+    	Precision:  0.87
+    	Recall:  0.9354838709677419
+    	F1 score:  0.9015544041450777
+
+    =============== Class:  Rank ===============
+    	tp, fp, fn counts:  [80, 14, 11]
+    	Precision:  0.851063829787234
+    	Recall:  0.8791208791208791
+    	F1 score:  0.8648648648648649
+
+    =============== Class:  Organization ===============
+    	tp, fp, fn counts:  [103, 33, 31]
+    	Precision:  0.7573529411764706
+    	Recall:  0.7686567164179104
+    	F1 score:  0.762962962962963
+
+    =============== Class:  Title_Role ===============
+    	tp, fp, fn counts:  [85, 20, 23]
+    	Precision:  0.8095238095238095
+    	Recall:  0.7870370370370371
+    	F1 score:  0.7981220657276995
+
+    =============== All classes ===============
+    	Precision:  0.8160919540229885
+    	Recall:  0.8333333333333334
+    	F1 score:  0.8246225319396051
+
+  2. Unknown words:
+      It turns out that the model handles unknown words automatically, which is implicitly done by tf.contrib.lookup.index_table_from_file (The following line is just a part of its documentation): 
+      tf.contrib.lookup.index_table_from_file --- Any lookup of an out-of-vocabulary token will return a bucket ID based on its hash if num_oov_buckets is greater than zero. Otherwise it is assigned the default_value
+
+  3. Relation extraction tools:
+    > test_docs
+    I have implemented a very simple relation extraction algorithm, which is simply assigning name entities to the nearest person. But this already produces some reasonable results.
+    Results are included in 'test_docs', those files are in BRAT annotation format. So, the relations can be viewed in BRAT, just like the original annotations.

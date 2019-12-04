@@ -29,27 +29,27 @@ commander |||| Role |||| (347, 356)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (0, 13)
 P. J. Isang |||| Person |||| (14, 25)
-Chief of Training and Operations |||| Title/Role |||| (37, 69)
+Chief of Training and Operations |||| Title_Role |||| (37, 69)
 Major General |||| Rank |||| (88, 101)
 J.A.H. Ewansia |||| Person |||| (102, 117)
 Joint Task Force |||| Organization |||| (125, 141)
-Commander |||| Title/Role |||| (149, 158)
-Chief of Standards and Evaluation |||| Title/Role |||| (183, 216)
+Commander |||| Title_Role |||| (149, 158)
+Chief of Standards and Evaluation |||| Title_Role |||| (183, 216)
 Army Headquarters |||| Organization |||| (231, 249)
 Major General Arende |||| Person |||| (257, 277)
 Major General |||| Rank |||| (311, 324)
 Abdulkadir |||| Person |||| (325, 335)
-commander TRADOC |||| Title/Role |||| (347, 364)
+commander TRADOC |||| Title_Role |||| (347, 364)
 
 >>> False-positives:
 	 Major General Arende |||| Person
-	 commander TRADOC |||| Title/Role
+	 commander TRADOC |||| Title_Role
 >>> False-negatives:
 	 DHQ |||| Organization
 	 Arende |||| Person
 	 DICON |||| Organization
 	 TRADOC |||| Organization
-	 commander |||| Title/Role
+	 commander |||| Title_Role
 
 
 
@@ -88,13 +88,13 @@ Nigeria Army |||| Organization |||| (54, 66)
 spokesman |||| Title |||| (37, 46)
 
 -------------- Predicted labels --------------
+spokesman |||| Title_Role |||| (37, 46)
 Nigeria Army |||| Organization |||| (54, 67)
 Col |||| Rank |||| (68, 72)
 Sani Usman |||| Person |||| (73, 83)
 
 >>> False-positives:
 >>> False-negatives:
-	 spokesman |||| Title/Role
 
 
 
@@ -138,15 +138,13 @@ Chief of Army Staff |||| Title |||| (4, 23)
 3 Armoured Division |||| Organization |||| (136, 155)
 
 -------------- Predicted labels --------------
-Chief of Army Staff |||| Title/Role |||| (4, 23)
+Chief of Army Staff |||| Title_Role |||| (4, 23)
 Lt Gen. |||| Rank |||| (32, 40)
 Yusuf Tukur Buratai |||| Person |||| (41, 61)
-3 Armoured Division Jos |||| Organization |||| (136, 160)
+3 Armoured Division |||| Organization |||| (136, 155)
 
 >>> False-positives:
-	 3 Armoured Division Jos |||| Organization
 >>> False-negatives:
-	 3 Armoured Division |||| Organization
 
 
 
@@ -163,11 +161,11 @@ Buratai |||| Person |||| (8, 15)
 General |||| Rank |||| (0, 7)
 
 -------------- Predicted labels --------------
+General |||| Rank |||| (0, 7)
+Buratai |||| Person |||| (8, 15)
 
 >>> False-positives:
 >>> False-negatives:
-	 Buratai |||| Person
-	 General |||| Rank
 
 
 
@@ -259,20 +257,19 @@ Lieutenant General |||| Rank |||| (293, 311)
 Chief of Army Staff |||| Title |||| (265, 284)
 
 -------------- Predicted labels --------------
-Deputy Director Public Relations |||| Title/Role |||| (17, 51)
+Deputy Director Public Relations |||| Title_Role |||| (17, 51)
 82 Division |||| Organization |||| (52, 63)
 Col |||| Rank |||| (79, 83)
 Sagir Musa |||| Person |||| (84, 95)
-General Officer Commanding |||| Title/Role |||| (136, 162)
-82 Division Nigerian Army |||| Organization |||| (169, 195)
+General Officer Commanding |||| Title_Role |||| (136, 162)
+82 Division |||| Organization |||| (169, 180)
 Major General |||| Rank |||| (196, 209)
 Adamu Baba Abubakar |||| Person |||| (210, 230)
-Chief of Army Staff |||| Title/Role |||| (265, 284)
+Chief of Army Staff |||| Title_Role |||| (265, 284)
 Lieutenant General |||| Rank |||| (293, 311)
 Yusufu Buratai |||| Person |||| (312, 327)
 
 >>> False-positives:
-	 82 Division Nigerian Army |||| Organization
 >>> False-negatives:
 	 Nigerian Army |||| Organization
 
@@ -289,10 +286,10 @@ Sentence:
 Joint Task Force |||| Organization |||| (111, 127)
 
 -------------- Predicted labels --------------
-Joint Task Force |||| Organization |||| (111, 127)
 
 >>> False-positives:
 >>> False-negatives:
+	 Joint Task Force |||| Organization
 
 
 
@@ -329,7 +326,7 @@ Brig Gen |||| Rank |||| (70, 79)
 Director of Defence Information |||| Title |||| (37, 68)
 
 -------------- Predicted labels --------------
-Director of Defence Information |||| Title/Role |||| (37, 69)
+Director of Defence Information |||| Title_Role |||| (37, 69)
 Brig Gen |||| Rank |||| (70, 79)
 Chris Olukolade |||| Person |||| (80, 96)
 
@@ -369,15 +366,15 @@ CHIEF of Army Staff |||| Title |||| (10, 29)
 Nigerian Army |||| Organization |||| (91, 104)
 
 -------------- Predicted labels --------------
-CHIEF of Army Staff |||| Organization |||| (10, 30)
+Army Staff |||| Title_Role |||| (19, 30)
 Lt- General |||| Rank |||| (31, 42)
 Onyeabo Ihejirika |||| Person |||| (43, 61)
+Nigerian Army |||| Organization |||| (91, 104)
 
 >>> False-positives:
-	 CHIEF of Army Staff |||| Organization
+	 Army Staff |||| Title_Role
 >>> False-negatives:
-	 CHIEF of Army Staff |||| Title/Role
-	 Nigerian Army |||| Organization
+	 CHIEF of Army Staff |||| Title_Role
 
 
 
@@ -395,12 +392,14 @@ Gen. |||| Rank |||| (0, 4)
 13 Brigade |||| Organization |||| (53, 63)
 
 -------------- Predicted labels --------------
-13 Brigade |||| Organization |||| (53, 63)
+Gen. |||| Rank |||| (0, 4)
+Ihejirika |||| Person |||| (5, 14)
+13 Brigade Garrison |||| Organization |||| (53, 72)
 
 >>> False-positives:
+	 13 Brigade Garrison |||| Organization
 >>> False-negatives:
-	 Ihejirika |||| Person
-	 Gen. |||| Rank
+	 13 Brigade |||| Organization
 
 
 
@@ -419,15 +418,17 @@ Major- General |||| Rank |||| (72, 86)
 Oluwaseun Oshinowo |||| Person |||| (87, 105)
 
 -------------- Predicted labels --------------
-General Officer Commanding GOC |||| Title/Role |||| (19, 51)
+General Officer Commanding GOC |||| Title_Role |||| (19, 51)
 82 Division |||| Organization |||| (52, 64)
 Major- General |||| Rank |||| (72, 86)
-Oluwaseun Oshinowo |||| Person |||| (87, 106)
+Oluwaseun Oshinowo Ihejirika |||| Person |||| (87, 116)
 
 >>> False-positives:
-	 General Officer Commanding GOC |||| Title/Role
+	 General Officer Commanding GOC |||| Title_Role
+	 Oluwaseun Oshinowo Ihejirika |||| Person
 >>> False-negatives:
-	 General Officer Commanding |||| Title/Role
+	 General Officer Commanding |||| Title_Role
+	 Oluwaseun Oshinowo |||| Person
 
 
 
@@ -444,13 +445,15 @@ Benjamin Ahanotu |||| Person |||| (76, 92)
 Acting General Officer Commanding |||| Title |||| (4, 37)
 
 -------------- Predicted labels --------------
-Acting General Officer Commanding |||| Title/Role |||| (4, 37)
+Acting General Officer Commanding |||| Title_Role |||| (4, 37)
 3 Division |||| Organization |||| (44, 55)
 Nigerian Army |||| Organization |||| (56, 70)
+Jos |||| Rank |||| (71, 75)
 Benjamin Ahanotu |||| Person |||| (76, 93)
 
 >>> False-positives:
 	 Nigerian Army |||| Organization
+	 Jos |||| Rank
 >>> False-negatives:
 
 
@@ -468,7 +471,7 @@ Bello Mohammed |||| Person |||| (101, 115)
 Brigade Commander |||| Role |||| (62, 79)
 
 -------------- Predicted labels --------------
-Brigade Commander |||| Title/Role |||| (62, 79)
+Brigade Commander |||| Title_Role |||| (62, 79)
 23 Brigade |||| Organization |||| (83, 94)
 Bello Mohammed |||| Person |||| (101, 116)
 
@@ -528,21 +531,21 @@ General Officer Commanding |||| Title |||| (374, 400)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (13, 26)
 Kamaldeen Role |||| Person |||| (27, 42)
-Commander |||| Title/Role |||| (52, 62)
+Commander |||| Title_Role |||| (52, 62)
 Army Headquarters Garrison |||| Organization |||| (63, 90)
-General officer Commanding |||| Title/Role |||| (102, 128)
+General officer Commanding |||| Title_Role |||| (102, 128)
 One Division |||| Organization |||| (129, 142)
 Major General |||| Rank |||| (151, 164)
 Lawrence Ngubane |||| Person |||| (165, 182)
-Deputy Commandant |||| Title/Role |||| (192, 210)
+Deputy Commandant |||| Title_Role |||| (192, 210)
 National Defence College |||| Organization |||| (211, 236)
-General Officer Commanding |||| Title/Role |||| (241, 267)
+General Officer Commanding |||| Title_Role |||| (241, 267)
 2 Division |||| Organization |||| (268, 279)
 Major General |||| Rank |||| (288, 301)
 Saleh Maina |||| Person |||| (302, 314)
-Commandant |||| Title/Role |||| (324, 334)
+Commandant |||| Title_Role |||| (324, 334)
 Armoured Corps and School |||| Organization |||| (335, 361)
-General Officer Commanding |||| Title/Role |||| (374, 400)
+General Officer Commanding |||| Title_Role |||| (374, 400)
 3 Division |||| Organization |||| (401, 412)
 
 >>> False-positives:
@@ -575,19 +578,17 @@ General Officer Commanding |||| Title |||| (227, 253)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (11, 24)
 Mohammed Isah |||| Person |||| (25, 39)
-Military Secretary Army |||| Title/Role |||| (53, 78)
-General Officer Commanding |||| Title/Role |||| (83, 109)
+Military Secretary Army |||| Title_Role |||| (53, 78)
+General Officer Commanding |||| Title_Role |||| (83, 109)
 82 Division |||| Organization |||| (110, 121)
 Nigerian Army |||| Organization |||| (129, 143)
 Major General |||| Rank |||| (154, 167)
-Emeka CG |||| Person |||| (168, 176)
-General Officer Commanding |||| Title/Role |||| (227, 253)
+Emeka CG Nwanguna |||| Person |||| (168, 186)
+General Officer Commanding |||| Title_Role |||| (227, 253)
 81 Division |||| Organization |||| (254, 266)
 
 >>> False-positives:
-	 Emeka CG |||| Person
 >>> False-negatives:
-	 Emeka CG Nwanguna |||| Person
 	 Major Genera |||| Rank
 	 DefenceHeadquarters |||| Organization
 
@@ -624,23 +625,27 @@ Commander |||| Role |||| (382, 391)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (47, 60)
 Moses Obi |||| Person |||| (61, 71)
-GOC |||| Title/Role |||| (81, 84)
-One Division |||| Organization |||| (85, 100)
-Chief of Operations |||| Title/Role |||| (112, 131)
+GOC |||| Rank |||| (81, 84)
+One Division |||| Person |||| (85, 100)
+Chief of Operations |||| Title_Role |||| (112, 131)
 Army Headquarters |||| Organization |||| (135, 153)
 Brigadier General |||| Rank |||| (154, 171)
 AT Umaru |||| Person |||| (172, 181)
-Director of Operations |||| Title/Role |||| (198, 220)
+Director of Operations |||| Title_Role |||| (198, 220)
 Defence Intelligence Agency |||| Organization |||| (228, 256)
-Director of Military Intelligence |||| Title/Role |||| (268, 302)
+Director of Military Intelligence |||| Title_Role |||| (268, 302)
 Brigadier General |||| Rank |||| (309, 326)
 AS Mustapha |||| Person |||| (327, 339)
 Army Headquarters |||| Organization |||| (352, 370)
-Commander |||| Title/Role |||| (382, 392)
+Commander |||| Title_Role |||| (382, 392)
 Brigade of Guards |||| Organization |||| (393, 411)
 
 >>> False-positives:
+	 GOC |||| Rank
+	 One Division |||| Person
 >>> False-negatives:
+	 One Division |||| Organization
+	 GOC |||| Title_Role
 
 
 
@@ -679,17 +684,18 @@ Brigade Commander |||| Role |||| (404, 421)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (0, 13)
 BM Monguno |||| Person |||| (14, 25)
-Commander |||| Title/Role |||| (36, 46)
+Commander |||| Title_Role |||| (36, 46)
 Brigade of Guards |||| Organization |||| (47, 65)
-Deputy Commandant |||| Title/Role |||| (73, 90)
+Deputy Commandant |||| Title_Role |||| (73, 90)
 National Defence College |||| Organization |||| (98, 122)
 Brigadier General |||| Rank |||| (133, 150)
 YD Pyeng |||| Person |||| (151, 160)
-Commandant |||| Title/Role |||| (174, 184)
+Commandant DEPOT Zaria |||| Title_Role |||| (174, 198)
+Provost Marshal |||| Title_Role |||| (212, 228)
 Nigerian Army |||| Organization |||| (229, 243)
 Brigadier General |||| Rank |||| (244, 261)
 AC Olukolade |||| Person |||| (262, 274)
-Director Army Public Relations |||| Title/Role |||| (286, 318)
+Director Army Public Relations |||| Title_Role |||| (286, 318)
 Brigadier General |||| Rank |||| (325, 342)
 AB Marwa |||| Person |||| (343, 351)
 Defence College |||| Organization |||| (363, 378)
@@ -697,11 +703,12 @@ Defence College |||| Organization |||| (363, 378)
 Brigade Commander |||| Organization |||| (404, 422)
 
 >>> False-positives:
+	 Commandant DEPOT Zaria |||| Title_Role
 	 Brigade Commander |||| Organization
 >>> False-negatives:
 	 DEPOT |||| Organization
-	 Provost Marshal |||| Title/Role
-	 Brigade Commander |||| Title/Role
+	 Commandant |||| Title_Role
+	 Brigade Commander |||| Title_Role
 
 
 
@@ -737,22 +744,22 @@ Military Secretary Army |||| Title |||| (351, 376)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (0, 13)
 TI Oliomogbe |||| Person |||| (14, 27)
-Commandant |||| Title/Role |||| (37, 48)
+Commandant |||| Title_Role |||| (37, 48)
 Nigerian Army Engineers Corps |||| Organization |||| (49, 78)
-Commandant |||| Title/Role |||| (86, 97)
+Commandant |||| Title_Role |||| (86, 97)
 Army College of Logistics |||| Organization |||| (98, 124)
 Major General |||| Rank |||| (125, 138)
 UT Usman |||| Person |||| (139, 147)
-Chief of Logistics |||| Title/Role |||| (159, 177)
+Chief of Logistics |||| Title_Role |||| (159, 177)
 Army Headquarters |||| Organization |||| (181, 199)
 Major General |||| Rank |||| (200, 213)
 AM Jubrin |||| Person |||| (214, 224)
-Army Provost Marshal |||| Title/Role |||| (238, 259)
-Chief of Administration |||| Title/Role |||| (271, 295)
+Army Provost Marshal |||| Title_Role |||| (238, 259)
+Chief of Administration |||| Title_Role |||| (271, 295)
 Army Headquarters |||| Organization |||| (296, 314)
 Major General |||| Rank |||| (321, 334)
 SU Abdukadir |||| Person |||| (335, 347)
-Military Secretary Army |||| Title/Role |||| (351, 377)
+Military Secretary Army |||| Title_Role |||| (351, 377)
 
 >>> False-positives:
 	 Nigerian Army Engineers Corps |||| Organization
@@ -777,14 +784,14 @@ chief of Army Standards and Evaluation |||| Title |||| (95, 133)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (0, 13)
 BC Azurunwa |||| Person |||| (14, 26)
-Director of Policy and Plans |||| Title/Role |||| (36, 64)
+Director of Policy and Plans |||| Title_Role |||| (36, 64)
 Army Headquarters |||| Organization |||| (65, 83)
-chief of Army Standards and Evaluation CASE |||| Title/Role |||| (95, 141)
+chief of Army Standards and Evaluation CASE |||| Title_Role |||| (95, 141)
 
 >>> False-positives:
-	 chief of Army Standards and Evaluation CASE |||| Title/Role
+	 chief of Army Standards and Evaluation CASE |||| Title_Role
 >>> False-negatives:
-	 chief of Army Standards and Evaluation |||| Title/Role
+	 chief of Army Standards and Evaluation |||| Title_Role
 
 
 
@@ -826,30 +833,30 @@ Director of Policy |||| Title |||| (418, 436)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (0, 13)
 EE Bassey |||| Person |||| (14, 24)
-Commander |||| Title/Role |||| (34, 43)
+Commander |||| Title_Role |||| (34, 43)
 32 Brigade |||| Organization |||| (44, 55)
 Defence Headquarters |||| Organization |||| (65, 85)
-Director of Administration |||| Title/Role |||| (89, 116)
+Director of Administration |||| Title_Role |||| (89, 116)
 Major General |||| Rank |||| (117, 130)
 Bala Usara |||| Person |||| (131, 141)
-Department of Physical Training to DHQ |||| Organization |||| (157, 195)
-Director of Sports |||| Title/Role |||| (199, 218)
+Department of Physical Training |||| Organization |||| (157, 188)
+Director of Sports |||| Title_Role |||| (199, 218)
 Major General |||| Rank |||| (219, 232)
 DM Edi |||| Person |||| (233, 240)
 Defence Headquarters |||| Organization |||| (253, 274)
-Commander |||| Title/Role |||| (286, 296)
+Commander |||| Title_Role |||| (286, 296)
 Army Headquarters Garrison |||| Organization |||| (297, 324)
 Major General |||| Rank |||| (332, 345)
 JA Okunbor |||| Person |||| (346, 357)
-Chief of Logistics |||| Title/Role |||| (371, 389)
+Chief of Logistics |||| Title_Role |||| (371, 389)
 Army headquarters |||| Organization |||| (393, 410)
-Director of Policy |||| Title/Role |||| (418, 436)
+Director of Policy |||| Title_Role |||| (418, 436)
+Army |||| Organization |||| (440, 444)
 
 >>> False-positives:
-	 Department of Physical Training to DHQ |||| Organization
+	 Army |||| Organization
 >>> False-negatives:
 	 Major Genera |||| Rank
-	 Department of Physical Training |||| Organization
 	 DHQ |||| Organization
 
 
@@ -892,33 +899,31 @@ Commandant |||| Role |||| (510, 520)
 -------------- Predicted labels --------------
 Brigadier General |||| Rank |||| (0, 17)
 Emeka Onwuamaegbu |||| Person |||| (18, 36)
-Director of Army Public Relations |||| Title/Role |||| (50, 83)
-Commandant |||| Title/Role |||| (95, 106)
+Director of Army Public Relations |||| Title_Role |||| (50, 83)
+Commandant |||| Title_Role |||| (95, 106)
 Nigerian Army Peacekeeping Centre |||| Organization |||| (107, 141)
 Brigadier General |||| Rank |||| (148, 165)
 KTJ Minimah |||| Person |||| (166, 178)
 Nigerian Army School of Infantry |||| Organization |||| (195, 228)
-Commander One Brigade |||| Title/Role |||| (240, 265)
+Commander One Brigade |||| Title_Role |||| (240, 265)
 Nigerian Army |||| Organization |||| (266, 280)
 Brigadier General |||| Rank |||| (289, 306)
 OM Sho Silva |||| Person |||| (307, 319)
-Defence Headquarters to Army Headquarters |||| Organization |||| (331, 372)
-Director of Physical Training |||| Title/Role |||| (376, 406)
+Defence Headquarters |||| Organization |||| (331, 351)
+Army Headquarters |||| Organization |||| (355, 372)
+Director of Physical Training |||| Title_Role |||| (376, 406)
 Brigadier General |||| Rank |||| (407, 424)
 BM Badewole |||| Person |||| (425, 437)
-Academic Registrar |||| Title/Role |||| (452, 470)
+Academic Registrar |||| Title_Role |||| (452, 470)
 Nigeria Defence Academy |||| Organization |||| (474, 498)
-Commandant |||| Title/Role |||| (510, 521)
+Commandant |||| Title_Role |||| (510, 521)
 Nigerian Army School of Military Police |||| Organization |||| (522, 562)
 
 >>> False-positives:
-	 Commander One Brigade |||| Title/Role
-	 Defence Headquarters to Army Headquarters |||| Organization
+	 Commander One Brigade |||| Title_Role
 >>> False-negatives:
 	 One Brigade |||| Organization
-	 Defence Headquarters |||| Organization
-	 Army Headquarters |||| Organization
-	 Commander |||| Title/Role
+	 Commander |||| Title_Role
 
 
 
@@ -968,43 +973,44 @@ Director of Operations |||| Title |||| (587, 609)
 -------------- Predicted labels --------------
 Brigadier General |||| Rank |||| (36, 53)
 OO Oshinowo |||| Person |||| (54, 66)
-Commander |||| Title/Role |||| (76, 86)
+Commander |||| Title_Role |||| (76, 86)
 22 Brigade |||| Organization |||| (87, 98)
-Commandant |||| Title/Role |||| (111, 122)
+Commandant |||| Title_Role |||| (111, 122)
 Nigeria Army Artillery School |||| Organization |||| (123, 153)
 Brigadier General |||| Rank |||| (154, 171)
 Yusuf Bomoi |||| Person |||| (172, 184)
-D G |||| Title/Role |||| (194, 197)
-Commandant |||| Title/Role |||| (211, 222)
+D G |||| Rank |||| (194, 197)
+Commandant |||| Title_Role |||| (211, 222)
 Nigeria Army School of Engineering |||| Organization |||| (223, 258)
 Brigadier General |||| Rank |||| (259, 276)
 G Bauka |||| Person |||| (277, 285)
-Commander |||| Title/Role |||| (295, 304)
-Brigade |||| Person |||| (307, 315)
+Commander |||| Rank |||| (295, 304)
+I Brigade |||| Person |||| (305, 315)
 Defence Intelligence Agency |||| Organization |||| (337, 364)
-Director |||| Title/Role |||| (368, 377)
+Director |||| Title_Role |||| (368, 377)
 Foreign Liaison |||| Organization |||| (378, 394)
 Brigadier General |||| Rank |||| (395, 412)
 AK Kwaskebe |||| Person |||| (413, 424)
-Commander |||| Title/Role |||| (434, 443)
+Commander |||| Title_Role |||| (434, 443)
 34 Brigade |||| Organization |||| (444, 455)
-Director of Training |||| Title/Role |||| (463, 483)
+Director of Training |||| Title_Role |||| (463, 483)
 Army Headquarters |||| Organization |||| (487, 504)
 Brigadier General |||| Rank |||| (511, 528)
 JS Kwabe |||| Person |||| (529, 537)
 Defence Headquarters |||| Organization |||| (554, 575)
-Director of Operations |||| Title/Role |||| (587, 609)
+Director of Operations |||| Title_Role |||| (587, 609)
 Army Headquarters |||| Organization |||| (613, 631)
 
 >>> False-positives:
-	 D G |||| Title/Role
-	 Brigade |||| Person
-	 Director |||| Title/Role
+	 D G |||| Rank
+	 Commander |||| Rank
+	 I Brigade |||| Person
+	 Director |||| Title_Role
 	 Foreign Liaison |||| Organization
 >>> False-negatives:
 	 I Brigade |||| Organization
-	 D G NYSC |||| Title/Role
-	 Director Foreign Liaison |||| Title/Role
+	 D G NYSC |||| Title_Role
+	 Director Foreign Liaison |||| Title_Role
 
 
 
@@ -1044,28 +1050,28 @@ Research |||| Organization |||| (493, 501)
 Major General |||| Rank |||| (21, 34)
 O Akinyemi |||| Person |||| (35, 46)
 3 Division |||| Organization |||| (59, 70)
+Director Peace keeping |||| Title_Role |||| (82, 105)
 Defence Headquarters |||| Organization |||| (109, 130)
 Major General Ihejirika |||| Person |||| (131, 155)
-Chief of Army Standards and Evaluation |||| Title/Role |||| (169, 208)
-Director of Engineering |||| Title/Role |||| (220, 243)
+Chief of Army Standards and Evaluation |||| Title_Role |||| (169, 208)
+Director of Engineering |||| Title_Role |||| (220, 243)
 Defence Headquarters |||| Organization |||| (247, 268)
 Major General |||| Rank |||| (269, 282)
 ID Penap |||| Person |||| (283, 291)
-Chief of Research and Development |||| Title/Role |||| (301, 335)
-Defence headquarters |||| Organization |||| (336, 357)
-Chief of Training and Operations |||| Title/Role |||| (381, 413)
+Chief of Research and Development |||| Title_Role |||| (301, 335)
+Chief of Training and Operations CTOP |||| Title_Role |||| (381, 421)
 Major General |||| Rank |||| (422, 435)
 FN Osukogu |||| Person |||| (436, 446)
-Department of Peacekeeping DHQ to Research |||| Organization |||| (458, 501)
+Department of Peacekeeping DHQ |||| Organization |||| (458, 489)
 
 >>> False-positives:
 	 Major General Ihejirika |||| Person
-	 Department of Peacekeeping DHQ to Research |||| Organization
+	 Chief of Training and Operations CTOP |||| Title_Role
 >>> False-negatives:
 	 Ihejirika |||| Person
 	 Major Genera |||| Rank
-	 Department of Peacekeeping DHQ |||| Organization
-	 Director Peace keeping |||| Title/Role
+	 Defence headquarters |||| Organization
+	 Chief of Training and Operations |||| Title_Role
 	 Research |||| Organization
 
 
@@ -1083,9 +1089,11 @@ Sentence:
 Nigerian Army |||| Organization |||| (75, 88)
 
 -------------- Predicted labels --------------
+Mohammed Abdullahi Abubakar |||| Person |||| (22, 49)
 Nigerian Army |||| Organization |||| (75, 88)
 
 >>> False-positives:
+	 Mohammed Abdullahi Abubakar |||| Person
 >>> False-negatives:
 
 
@@ -1105,12 +1113,14 @@ Major General |||| Rank |||| (101, 114)
 Benjamin Ahanotu |||| Person |||| (115, 131)
 
 -------------- Predicted labels --------------
-General officer Commanding |||| Title/Role |||| (60, 86)
+General officer Commanding |||| Title_Role |||| (60, 86)
 3rd Division |||| Organization |||| (87, 100)
 Major General |||| Rank |||| (101, 114)
 Benjamin Ahanotu |||| Person |||| (115, 131)
+Government House |||| Organization |||| (139, 156)
 
 >>> False-positives:
+	 Government House |||| Organization
 >>> False-negatives:
 
 
@@ -1129,7 +1139,7 @@ Lt General |||| Rank |||| (32, 43)
 Chief of Army Staff |||| Title |||| (4, 23)
 
 -------------- Predicted labels --------------
-Chief of Army Staff |||| Title/Role |||| (4, 23)
+Chief of Army Staff |||| Title_Role |||| (4, 23)
 Lt General |||| Rank |||| (32, 43)
 Tukur Yusuf Buratai |||| Person |||| (44, 63)
 Alh |||| Rank |||| (102, 106)
@@ -1162,12 +1172,12 @@ Nigeria Army |||| Organization |||| (46, 58)
 -------------- Predicted labels --------------
 Lt Gen. |||| Rank |||| (0, 8)
 Buratai |||| Person |||| (9, 16)
+Nigeria Army |||| Organization |||| (46, 58)
 
 >>> False-positives:
 	 Lt Gen. |||| Rank
 >>> False-negatives:
 	 Lt Gen |||| Rank
-	 Nigeria Army |||| Organization
 
 
 
@@ -1185,13 +1195,15 @@ K.N Garba |||| Person |||| (144, 153)
 Brigade Commander |||| Role |||| (66, 83)
 
 -------------- Predicted labels --------------
-Brigade Commander |||| Title/Role |||| (66, 83)
-27 task force Brigade |||| Organization |||| (91, 112)
+Brigade Commander |||| Title_Role |||| (66, 83)
+27 task force Brigade Buni- |||| Organization |||| (91, 118)
 Brigadier General |||| Rank |||| (126, 143)
 K.N Garba |||| Person |||| (144, 153)
 
 >>> False-positives:
+	 27 task force Brigade Buni- |||| Organization
 >>> False-negatives:
+	 27 task force Brigade |||| Organization
 
 
 
@@ -1211,16 +1223,14 @@ Mohammed Zaruwa |||| Person |||| (279, 294)
 
 -------------- Predicted labels --------------
 Army High Command |||| Organization |||| (166, 183)
-General Officer Commanding |||| Title/Role |||| (216, 242)
-3 division Jos |||| Organization |||| (249, 264)
+General Officer Commanding |||| Title_Role |||| (216, 242)
+3 division |||| Organization |||| (249, 259)
 Major General |||| Rank |||| (265, 278)
 Mohammed Zaruwa |||| Person |||| (279, 295)
 
 >>> False-positives:
 	 Army High Command |||| Organization
-	 3 division Jos |||| Organization
 >>> False-negatives:
-	 3 division |||| Organization
 
 
 
@@ -1261,14 +1271,16 @@ GOC |||| Title |||| (17, 20)
 Nigerian Army |||| Organization |||| (98, 111)
 
 -------------- Predicted labels --------------
+General |||| Rank |||| (27, 34)
+F.O.Alli |||| Person |||| (35, 43)
 3 armoured division |||| Organization |||| (71, 90)
 Nigerian Army |||| Organization |||| (98, 112)
 
 >>> False-positives:
+	 General |||| Rank
 >>> False-negatives:
-	 F.O.Alli |||| Person
 	 Major General |||| Rank
-	 GOC |||| Title/Role
+	 GOC |||| Title_Role
 
 
 
@@ -1290,15 +1302,16 @@ Brigade Commander |||| Role |||| (110, 127)
 Principal General Staff Officer to the minister of defence |||| Role |||| (248, 306)
 
 -------------- Predicted labels --------------
-Director of Operations |||| Title/Role |||| (44, 66)
+General |||| Rank |||| (0, 7)
+Alli |||| Person |||| (8, 12)
+Director of Operations |||| Title_Role |||| (44, 66)
 Army Headquarters |||| Organization |||| (70, 88)
-Brigade Commander |||| Title/Role |||| (110, 127)
+Brigade Commander |||| Title_Role |||| (110, 127)
+Army Headquarters |||| Organization |||| (160, 177)
 
 >>> False-positives:
 >>> False-negatives:
-	 Alli |||| Person
-	 General |||| Rank
-	 Principal General Staff Officer to the minister of defence |||| Title/Role
+	 Principal General Staff Officer to the minister of defence |||| Title_Role
 
 
 
@@ -1317,11 +1330,11 @@ Zaruwa |||| Person |||| (8, 14)
 General |||| Rank |||| (0, 7)
 
 -------------- Predicted labels --------------
+General |||| Rank |||| (0, 7)
+Zaruwa |||| Person |||| (8, 14)
 
 >>> False-positives:
 >>> False-negatives:
-	 Zaruwa |||| Person
-	 General |||| Rank
 
 
 
@@ -1338,15 +1351,15 @@ Lt.-Gen |||| Rank |||| (25, 32)
 Chief of Army Staff |||| Title |||| (4, 23)
 
 -------------- Predicted labels --------------
-Chief of Army Staff |||| Title/Role |||| (4, 24)
+Chief of Army Staff |||| Title_Role |||| (4, 24)
 Lt.-Gen |||| Rank |||| (25, 33)
 Tukur Buratai |||| Person |||| (34, 47)
 Nigerian Army |||| Organization |||| (146, 159)
-Nigerian Military School in Zaria |||| Organization |||| (168, 202)
+Nigerian Military School |||| Organization |||| (168, 192)
 
 >>> False-positives:
 	 Nigerian Army |||| Organization
-	 Nigerian Military School in Zaria |||| Organization
+	 Nigerian Military School |||| Organization
 >>> False-negatives:
 
 
@@ -1369,14 +1382,14 @@ Brigade Commander |||| Role |||| (265, 282)
 5 brigade |||| Organization |||| (286, 295)
 
 -------------- Predicted labels --------------
-GOC |||| Title/Role |||| (225, 228)
+GOC |||| Title_Role |||| (225, 228)
 7 division |||| Organization |||| (229, 240)
 
 >>> False-positives:
 >>> False-negatives:
 	 MG Adeosun |||| Person
 	 BG Udoh |||| Person
-	 Brigade Commander |||| Title/Role
+	 Brigade Commander |||| Title_Role
 	 5 brigade |||| Organization
 
 
@@ -1472,22 +1485,22 @@ SK Usman |||| Person |||| (370, 378)
 Operation LAFIYA DOLE |||| Organization |||| (561, 582)
 
 -------------- Predicted labels --------------
-Chief of Army Staff |||| Title/Role |||| (22, 42)
+Chief of Army Staff |||| Title_Role |||| (22, 42)
 Lieutenant General |||| Rank |||| (43, 61)
 TY Buratai |||| Person |||| (62, 73)
-Chief of Administration Army |||| Title/Role |||| (93, 124)
+Chief of Administration Army |||| Title_Role |||| (93, 124)
 Major General |||| Rank |||| (125, 138)
 IM Alkali |||| Person |||| (139, 149)
-Chief of Civil Military Affairs |||| Title/Role |||| (150, 182)
+Chief of Civil Military Affairs |||| Title_Role |||| (150, 182)
 Major General |||| Rank |||| (183, 196)
 NE Angbazo |||| Person |||| (197, 208)
-Theatre Commander |||| Title/Role |||| (209, 227)
+Theatre Commander |||| Title_Role |||| (209, 227)
 Operation LAFIYA DOLE |||| Organization |||| (228, 250)
 Major General |||| Rank |||| (251, 264)
 RI Nicholas |||| Person |||| (265, 277)
-General Officer Commanding |||| Title/Role |||| (278, 304)
+General Officer Commanding |||| Title_Role |||| (278, 304)
 7 Division |||| Organization |||| (305, 315)
-Director Army Public Relations |||| Title/Role |||| (320, 351)
+Director Army Public Relations |||| Title_Role |||| (320, 351)
 Brigadier General |||| Rank |||| (352, 369)
 SK Usman |||| Person |||| (370, 379)
 Headquarters 7 Division |||| Organization |||| (431, 454)
@@ -1496,9 +1509,9 @@ Operation LAFIYA DOLE |||| Organization |||| (561, 583)
 
 >>> False-positives:
 	 Lieutenant General |||| Rank
-	 Theatre Commander |||| Title/Role
+	 Theatre Commander |||| Title_Role
 	 RI Nicholas |||| Person
-	 General Officer Commanding |||| Title/Role
+	 General Officer Commanding |||| Title_Role
 	 Headquarters 7 Division |||| Organization
 >>> False-negatives:
 	 Lieutenant Genera |||| Rank
@@ -1536,13 +1549,15 @@ DD Ahmadu |||| Person |||| (70, 79)
 27 Task Force Brigade |||| Organization |||| (113, 134)
 
 -------------- Predicted labels --------------
-Chief of Training and Operations Army |||| Title/Role |||| (15, 55)
+Chief of Training and Operations Army |||| Title_Role |||| (15, 55)
 Major General |||| Rank |||| (56, 69)
 DD Ahmadu |||| Person |||| (70, 79)
-27 Task Force Brigade |||| Organization |||| (113, 135)
+Headquarters 27 Task Force Brigade |||| Organization |||| (100, 135)
 
 >>> False-positives:
+	 Headquarters 27 Task Force Brigade |||| Organization
 >>> False-negatives:
+	 27 Task Force Brigade |||| Organization
 
 
 
@@ -1563,7 +1578,7 @@ Nigerian Army |||| Organization |||| (78, 91)
 -------------- Predicted labels --------------
 Major General |||| Rank |||| (0, 13)
 Fatai Alli |||| Person |||| (14, 25)
-General Officer Commanding |||| Title/Role |||| (26, 52)
+General Officer Commanding |||| Title_Role |||| (26, 52)
 3 Division |||| Organization |||| (60, 70)
 Nigerian Army |||| Organization |||| (78, 92)
 
@@ -1589,14 +1604,14 @@ Director Defence Information |||| Title |||| (32, 61)
 -------------- Predicted labels --------------
 Maj.-Gen |||| Rank |||| (0, 9)
 Chris Ogunkolade |||| Person |||| (10, 27)
-Director |||| Title/Role |||| (32, 41)
+Director |||| Title_Role |||| (32, 41)
 Defence Information |||| Organization |||| (42, 62)
 
 >>> False-positives:
-	 Director |||| Title/Role
+	 Director |||| Title_Role
 	 Defence Information |||| Organization
 >>> False-negatives:
-	 Director Defence Information |||| Title/Role
+	 Director Defence Information |||| Title_Role
 
 
 
@@ -1613,7 +1628,7 @@ Brigadier General |||| Rank |||| (46, 63)
 Director Army Public Relations |||| Title |||| (13, 44)
 
 -------------- Predicted labels --------------
-Director Army Public Relations |||| Title/Role |||| (13, 45)
+Director Army Public Relations |||| Title_Role |||| (13, 45)
 Brigadier General |||| Rank |||| (46, 63)
 Ibrahim Attahiru |||| Person |||| (64, 81)
 
@@ -1660,7 +1675,7 @@ Brigadier General |||| Organization |||| (55, 72)
 Director Army Public Relation |||| Title |||| (23, 53)
 
 -------------- Predicted labels --------------
-Director Army Public Relation |||| Title/Role |||| (23, 54)
+Director Army Public Relation |||| Title_Role |||| (23, 54)
 Brigadier General |||| Rank |||| (55, 72)
 Olajide Laleye |||| Person |||| (73, 88)
 
@@ -1690,17 +1705,17 @@ Director Army Public Relations |||| Title |||| (75, 106)
 
 -------------- Predicted labels --------------
 Radio Nigeria Defence Correspondent |||| Organization |||| (0, 35)
-Director Army Public Relations |||| Title/Role |||| (75, 107)
-Commander |||| Title/Role |||| (133, 143)
+Director Army Public Relations |||| Title_Role |||| (75, 107)
+General |||| Rank |||| (108, 115)
+Laleye |||| Person |||| (116, 122)
+Commander |||| Title_Role |||| (133, 143)
 One Division Garrison |||| Organization |||| (144, 166)
-Commander |||| Title/Role |||| (223, 232)
+Commander |||| Title_Role |||| (223, 232)
 Thirteenth Brigade |||| Organization |||| (240, 259)
 
 >>> False-positives:
 	 Radio Nigeria Defence Correspondent |||| Organization
 >>> False-negatives:
-	 Laleye |||| Person
-	 General |||| Rank
 
 
 
@@ -1721,21 +1736,19 @@ Major General |||| Rank |||| (201, 214)
 General Officer Commanding GOC |||| Title |||| (141, 173)
 
 -------------- Predicted labels --------------
-General Officer Commanding |||| Title/Role |||| (141, 167)
-82 Division Nigerian Army |||| Organization |||| (174, 200)
+General Officer Commanding |||| Title_Role |||| (141, 167)
+82 Division |||| Organization |||| (174, 185)
 Major General |||| Rank |||| (201, 214)
 Adamu Baba Abubakar |||| Person |||| (215, 234)
 General |||| Rank |||| (317, 324)
 Adamu Baba Abubakar |||| Person |||| (325, 344)
 
 >>> False-positives:
-	 General Officer Commanding |||| Title/Role
-	 82 Division Nigerian Army |||| Organization
+	 General Officer Commanding |||| Title_Role
 	 General |||| Rank
 >>> False-negatives:
 	 Operation Python Dance II |||| Organization
-	 82 Division |||| Organization
-	 General Officer Commanding GOC |||| Title/Role
+	 General Officer Commanding GOC |||| Title_Role
 
 
 
@@ -1752,12 +1765,12 @@ CSP |||| Rank |||| (46, 49)
 Rowland Omatoje |||| Person |||| (50, 65)
 
 -------------- Predicted labels --------------
-Divisional Police Officer |||| Title/Role |||| (4, 29)
+Divisional Police Officer |||| Title_Role |||| (4, 29)
+CSP |||| Rank |||| (46, 49)
 Rowland Omatoje |||| Person |||| (50, 66)
 
 >>> False-positives:
 >>> False-negatives:
-	 CSP |||| Rank
 
 
 
@@ -1775,14 +1788,14 @@ Sentence:
 Fegge Police Division |||| Organization |||| (285, 306)
 
 -------------- Predicted labels --------------
-police Area Commander |||| Title/Role |||| (4, 25)
+police Area Commander |||| Title_Role |||| (4, 25)
 Benjamin Wordu |||| Person |||| (43, 58)
-Assistant Commissioner of Police |||| Title/Role |||| (62, 95)
+Assistant Commissioner of Police |||| Title_Role |||| (62, 95)
 
 >>> False-positives:
-	 police Area Commander |||| Title/Role
+	 police Area Commander |||| Title_Role
 	 Benjamin Wordu |||| Person
-	 Assistant Commissioner of Police |||| Title/Role
+	 Assistant Commissioner of Police |||| Title_Role
 >>> False-negatives:
 	 Fegge Police Division |||| Organization
 
@@ -1804,6 +1817,8 @@ Admiral |||| Rank |||| (246, 253)
 chief of defence staff |||| Title |||| (222, 244)
 
 -------------- Predicted labels --------------
+Admiral |||| Rank |||| (246, 253)
+Ola Saa’ad Ibrahim |||| Person |||| (254, 273)
 1 Mechanized Division |||| Organization |||| (328, 350)
 82 Battalion |||| Organization |||| (359, 372)
 
@@ -1811,9 +1826,7 @@ chief of defence staff |||| Title |||| (222, 244)
 	 1 Mechanized Division |||| Organization
 	 82 Battalion |||| Organization
 >>> False-negatives:
-	 Ola Saa’ad Ibrahim |||| Person
-	 Admiral |||| Rank
-	 chief of defence staff |||| Title/Role
+	 chief of defence staff |||| Title_Role
 
 
 
@@ -1836,25 +1849,23 @@ Brig.-Gen |||| Rank |||| (177, 187)
 Commander |||| Role |||| (121, 130)
 
 -------------- Predicted labels --------------
-Acting G.O.C. |||| Title/Role |||| (0, 14)
-82 Division Nigerian Army |||| Organization |||| (15, 42)
+Acting G.O.C. |||| Title_Role |||| (0, 14)
+82 Division |||| Organization |||| (15, 27)
+Nigerian Army |||| Organization |||| (28, 42)
 Brig.-Gen |||| Rank |||| (43, 53)
-Ibrahim Attahiru Igwe of Nike Enugu State |||| Organization |||| (54, 97)
-Igwe Julius Nnaji |||| Person |||| (98, 116)
-Commander |||| Title/Role |||| (121, 131)
-82 Division Nigerian Army Medical Services |||| Organization |||| (132, 176)
+Ibrahim Attahiru |||| Person |||| (54, 71)
+Julius Nnaji |||| Person |||| (103, 116)
+Commander |||| Title_Role |||| (121, 131)
+82 Division |||| Organization |||| (132, 144)
+Nigerian Army Medical Services |||| Organization |||| (145, 176)
 Brig.-Gen |||| Rank |||| (177, 187)
 Austin Ogbe |||| Person |||| (188, 200)
 
 >>> False-positives:
-	 82 Division Nigerian Army |||| Organization
-	 Ibrahim Attahiru Igwe of Nike Enugu State |||| Organization
-	 Igwe Julius Nnaji |||| Person
-	 82 Division Nigerian Army Medical Services |||| Organization
+	 Nigerian Army |||| Organization
+	 Julius Nnaji |||| Person
+	 Nigerian Army Medical Services |||| Organization
 >>> False-negatives:
-	 Ibrahim Attahiru |||| Person
-	 82 Division |||| Organization
-	 82 Division |||| Organization
 
 
 
@@ -1872,17 +1883,19 @@ Major General |||| Rank |||| (73, 86)
 General Officer Commanding |||| Title |||| (4, 30)
 
 -------------- Predicted labels --------------
-Officer Commanding |||| Title/Role |||| (12, 30)
+Officer Commanding |||| Title_Role |||| (12, 30)
 3 Armoured Division |||| Organization |||| (31, 50)
+Nigerian Army |||| Organization |||| (58, 72)
 Major General |||| Rank |||| (73, 86)
 Jack Nwaogbo |||| Person |||| (87, 100)
 
 >>> False-positives:
-	 Officer Commanding |||| Title/Role
+	 Officer Commanding |||| Title_Role
 	 3 Armoured Division |||| Organization
+	 Nigerian Army |||| Organization
 >>> False-negatives:
 	 3 Armoured Division of the Nigerian Arm |||| Organization
-	 General Officer Commanding |||| Title/Role
+	 General Officer Commanding |||| Title_Role
 
 
 
@@ -1900,7 +1913,7 @@ Brigadier General |||| Rank |||| (66, 83)
 Commander |||| Role |||| (32, 41)
 
 -------------- Predicted labels --------------
-Commander |||| Title/Role |||| (32, 42)
+Commander |||| Title_Role |||| (32, 42)
 43 Division Engineers |||| Organization |||| (43, 65)
 Brigadier General |||| Rank |||| (66, 83)
 Bamidele Ogunkale |||| Person |||| (84, 102)
@@ -1925,16 +1938,16 @@ Nigerian Army |||| Organization |||| (43, 56)
 General Officer Commandin |||| Title |||| (4, 29)
 
 -------------- Predicted labels --------------
-General Officer Commanding |||| Title/Role |||| (4, 30)
+General Officer Commanding |||| Title_Role |||| (4, 30)
 2 Division |||| Organization |||| (31, 42)
 Major Gen. |||| Rank |||| (58, 68)
 Mohammed Abubakar |||| Person |||| (69, 87)
 
 >>> False-positives:
-	 General Officer Commanding |||| Title/Role
+	 General Officer Commanding |||| Title_Role
 >>> False-negatives:
 	 Nigerian Army |||| Organization
-	 General Officer Commandin |||| Title/Role
+	 General Officer Commandin |||| Title_Role
 
 
 
@@ -1988,13 +2001,13 @@ Operation Zaman Lafiya Dole |||| Organization |||| (475, 502)
 
 -------------- Predicted labels --------------
 James Ocholi |||| Person |||| (177, 190)
-Chief of Training and Operations |||| Title/Role |||| (286, 318)
+Chief of Training and Operations |||| Title_Role |||| (286, 318)
 Nigeria Army |||| Organization |||| (326, 338)
 Major General |||| Rank |||| (339, 352)
 Yusha’u Mahmood Abubakar |||| Person |||| (353, 377)
-Theatre Commander |||| Title/Role |||| (454, 471)
+Theatre Commander |||| Title_Role |||| (454, 471)
 Operation Zaman Lafiya |||| Organization |||| (475, 497)
-Acting General Officer Commanding |||| Title/Role |||| (655, 688)
+Acting General Officer Commanding |||| Title_Role |||| (655, 688)
 3 Armoured Division |||| Organization |||| (708, 727)
 Brigadier |||| Rank |||| (728, 737)
 M.S.A. Aliyu |||| Person |||| (738, 750)
@@ -2002,9 +2015,9 @@ M.S.A. Aliyu |||| Person |||| (738, 750)
 >>> False-positives:
 	 James Ocholi |||| Person
 	 Operation Zaman Lafiya |||| Organization
-	 Acting General Officer Commanding |||| Title/Role
+	 Acting General Officer Commanding |||| Title_Role
 >>> False-negatives:
-	 General Officer Commanding |||| Title/Role
+	 General Officer Commanding |||| Title_Role
 	 Operation Zaman Lafiya Dole |||| Organization
 
 
@@ -2042,7 +2055,7 @@ Director Army Public Relations |||| Title |||| (29, 60)
 -------------- Predicted labels --------------
 Brig.-Gen |||| Rank |||| (0, 10)
 Texas Chukwu |||| Person |||| (11, 24)
-Director Army Public Relations |||| Title/Role |||| (29, 61)
+Director Army Public Relations |||| Title_Role |||| (29, 61)
 
 >>> False-positives:
 >>> False-negatives:
@@ -2105,7 +2118,7 @@ Lt General |||| Rank |||| (47, 58)
 Chief of Army Staff |||| Title |||| (26, 45)
 
 -------------- Predicted labels --------------
-Chief of Army Staff |||| Title/Role |||| (26, 46)
+Chief of Army Staff |||| Title_Role |||| (26, 46)
 Lt General |||| Rank |||| (47, 58)
 KTJ Minimah |||| Person |||| (59, 70)
 
@@ -2127,9 +2140,11 @@ Sentence:
 Operation Zaman Lafia |||| Organization |||| (216, 237)
 
 -------------- Predicted labels --------------
+Federal Government ’s |||| Organization |||| (37, 57)
 Operation Zaman Lafia |||| Organization |||| (216, 238)
 
 >>> False-positives:
+	 Federal Government ’s |||| Organization
 >>> False-negatives:
 
 
@@ -2168,13 +2183,13 @@ Sentence:
 Operation Sweep |||| Organization |||| (84, 99)
 
 -------------- Predicted labels --------------
-Commander |||| Title/Role |||| (71, 80)
+Commander |||| Title_Role |||| (71, 80)
 Operation Sweep |||| Organization |||| (84, 100)
 Brig General |||| Rank |||| (191, 203)
 Mohammed Marwa |||| Person |||| (204, 218)
 
 >>> False-positives:
-	 Commander |||| Title/Role
+	 Commander |||| Title_Role
 	 Brig General |||| Rank
 	 Mohammed Marwa |||| Person
 >>> False-negatives:
@@ -2220,13 +2235,13 @@ Three Division |||| Organization |||| (27, 42)
 General Officer Commanding |||| Title |||| (0, 26)
 
 -------------- Predicted labels --------------
-General Officer Commanding |||| Title/Role |||| (0, 26)
-Three Division |||| Organization |||| (27, 42)
+General Officer Commanding |||| Title_Role |||| (0, 26)
 Major General |||| Rank |||| (43, 56)
 Ebobowei Bona Awala |||| Person |||| (57, 77)
 
 >>> False-positives:
 >>> False-negatives:
+	 Three Division |||| Organization
 
 
 
@@ -2247,18 +2262,18 @@ Colonel |||| Rank |||| (171, 178)
 Commander of Supply and Transport |||| Title |||| (120, 153)
 
 -------------- Predicted labels --------------
-Commander |||| Title/Role |||| (55, 64)
+Commander |||| Title_Role |||| (55, 64)
 Special Task Force |||| Organization |||| (72, 91)
 Major General |||| Rank |||| (92, 105)
 Henry Ayoola |||| Person |||| (106, 119)
-Commander of Supply and Transport of the Division |||| Organization |||| (120, 170)
+Commander of Supply and Transport |||| Organization |||| (120, 153)
 Colonel |||| Rank |||| (171, 178)
 Charles Idowu |||| Person |||| (179, 192)
 
 >>> False-positives:
-	 Commander of Supply and Transport of the Division |||| Organization
+	 Commander of Supply and Transport |||| Organization
 >>> False-negatives:
-	 Commander of Supply and Transport |||| Title/Role
+	 Commander of Supply and Transport |||| Title_Role
 
 
 
@@ -2302,15 +2317,15 @@ General |||| Rank |||| (166, 173)
 General Officer Commanding GOC |||| Title |||| (120, 152)
 
 -------------- Predicted labels --------------
-General Officer Commanding |||| Title/Role |||| (120, 146)
+General Officer Commanding |||| Title_Role |||| (120, 146)
 7 Division |||| Organization |||| (154, 165)
 General |||| Rank |||| (166, 173)
 Lamidi Adeosun |||| Person |||| (174, 189)
 
 >>> False-positives:
-	 General Officer Commanding |||| Title/Role
+	 General Officer Commanding |||| Title_Role
 >>> False-negatives:
-	 General Officer Commanding GOC |||| Title/Role
+	 General Officer Commanding GOC |||| Title_Role
 
 
 
@@ -2329,15 +2344,15 @@ Major General |||| Rank |||| (73, 86)
 General Officer Commanding GOC |||| Role |||| (28, 60)
 
 -------------- Predicted labels --------------
-General Officer Commanding |||| Title/Role |||| (28, 54)
+General Officer Commanding |||| Title_Role |||| (28, 54)
 3 Division |||| Organization |||| (61, 72)
 Major General |||| Rank |||| (73, 86)
 Fatai Alli |||| Person |||| (87, 98)
 
 >>> False-positives:
-	 General Officer Commanding |||| Title/Role
+	 General Officer Commanding |||| Title_Role
 >>> False-negatives:
-	 General Officer Commanding GOC |||| Title/Role
+	 General Officer Commanding GOC |||| Title_Role
 
 
 
@@ -2346,30 +2361,30 @@ Fatai Alli |||| Person |||| (87, 98)
 +--------------------------------------------------+
 
 =============== Class:  Person ===============
-	tp, fp, fn counts:  [79, 11, 14]
-	Precision:  0.8777777777777778
-	Recall:  0.8494623655913979
-	F1 score:  0.8633879781420766
+	tp, fp, fn counts:  [87, 13, 6]
+	Precision:  0.87
+	Recall:  0.9354838709677419
+	F1 score:  0.9015544041450777
 
 =============== Class:  Rank ===============
-	tp, fp, fn counts:  [73, 9, 18]
-	Precision:  0.8902439024390244
-	Recall:  0.8021978021978022
-	F1 score:  0.8439306358381502
+	tp, fp, fn counts:  [80, 14, 11]
+	Precision:  0.851063829787234
+	Recall:  0.8791208791208791
+	F1 score:  0.8648648648648649
 
 =============== Class:  Organization ===============
-	tp, fp, fn counts:  [97, 35, 35]
-	Precision:  0.7348484848484849
-	Recall:  0.7348484848484849
-	F1 score:  0.7348484848484849
+	tp, fp, fn counts:  [103, 33, 31]
+	Precision:  0.7573529411764706
+	Recall:  0.7686567164179104
+	F1 score:  0.762962962962963
 
-=============== Class:  Title/Role ===============
-	tp, fp, fn counts:  [86, 18, 23]
-	Precision:  0.8269230769230769
-	Recall:  0.7889908256880734
-	F1 score:  0.8075117370892019
+=============== Class:  Title_Role ===============
+	tp, fp, fn counts:  [85, 20, 23]
+	Precision:  0.8095238095238095
+	Recall:  0.7870370370370371
+	F1 score:  0.7981220657276995
 
 =============== All classes ===============
-	Precision:  0.821078431372549
-	Recall:  0.788235294117647
-	F1 score:  0.8043217286914764
+	Precision:  0.8160919540229885
+	Recall:  0.8333333333333334
+	F1 score:  0.8246225319396051
