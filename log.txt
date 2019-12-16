@@ -345,3 +345,8 @@ A summary of the report:
     > test_docs
     I have implemented a very simple relation extraction algorithm, which is simply assigning name entities to the nearest person. But this already produces some reasonable results.
     Results are included in 'test_docs', those files are in BRAT annotation format. So, the relations can be viewed in BRAT, just like the original annotations.
+
+
+Main purpose is to get info from a lot of doc that a person cannot go through mannully.
+1. corpus, with high levels and low levels, build a structure
+https://www.state.gov/wp-content/uploads/2019/12/FMT_Volume-I_FY2018_2019.pdf
