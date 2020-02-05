@@ -3,11 +3,16 @@ import pred
 from process import inv_label_mapping
 from eval import *
 
+import pprint
+pp = pprint.PrettyPrinter(indent=2)
+
 HAS_RANK = 'has_rank'
 HAS_TOR = 'has_title_or_role'
 # HAS_TITLE = 'has_title'
 IS_POSTED = 'is_posted'
 all_relation_types = [HAS_RANK, HAS_TOR, IS_POSTED]
+
+ENDING_PUNCTUATION = ",."
 
 class NameEntity():
     def __init__(self, id, name, type, span):
@@ -41,6 +46,7 @@ class Relation():
         return "R{}	{} Arg1:T{} Arg2:T{}".format(self.id, \
             self.type, self.arg1.id, self.arg2.id)
 
+
 def get_relations(rel_count, pred_entities):
     person_entities = []
     for entity in pred_entities:
@@ -68,10 +74,24 @@ def get_relations(rel_count, pred_entities):
         elif entity.type == "ORG":
             relations.append(Relation(rel_count, person_entities[idx], entity, IS_POSTED))
             rel_count += 1
-    # print(relations)
+
     if len(relations) == 0:
         return rel_count, None
     return rel_count, relations
+
+def find_entity_within(query_en, en_list):
+    for en in en_list:
+
+        if (en.type == "RNK" or en.type == "TOR") and \
+            en.name.lower() != query_en.name.lower() and \
+            en.name.lower() in query_en.name.lower():
+            en_start = query_en.name.lower().find(en.name.lower())
+            en_end = en_start + len(en.name)
+            if en_start == 0 or en_end == len(query_en.name):
+                return en_start, en_end, en.type
+            else:
+                return None
+    return None
 
 
 if __name__ == '__main__':
@@ -85,65 +105,69 @@ if __name__ == '__main__':
         doc = test_file.read()
     with open(doc_file) as test_file:
         test_sentences = test_file.readlines()
-    # doc_sentences = []
-    # for stn in test_sentences:
-    #     print(repr(stn))
-    #     if stn != "":
-    #         doc_sentences.append(stn.strip())
     doc_sentences = [sentence.strip() for sentence in test_sentences if sentence.strip() != '']
-
-
-    # print(doc_sentences)
-    # pred_tags = pred.get_prediction(sentence)
-    # print(doc_sentences)
     sentence_pred_tags = pred.build_pred_dict(doc_sentences)
-    # print(sentence)
-    # print(pred_tags)
-    # print(sentence_pred_tags)
 
+    # Build a list of NameEntity instances for recognized entities.
     name_entity_count = 1
     rel_count = 1
     cur_sentence_start = 0
     cur_doc = ''
     doc_entities = []
-    doc_relations = []
     for sentence in doc_sentences:
-        # print("\n\n================\n"+sentence)
         cur_doc += sentence + '\n\n'
 
-        # pred_names = []
-        # pred_tags = []
         pred_entities = []
         for name_position in sentence_pred_tags[sentence].keys():
             pred_name = sentence[name_position[0]: name_position[1]]
             pred_tag = sentence_pred_tags[sentence][name_position]
             doc_name_position = [cur_sentence_start + name_position[0], \
                                 cur_sentence_start + name_position[1]]
-            # print(cur_doc[doc_name_position[0] : doc_name_position[1]])
-            # pred_names.append(pred_name)
-            # pred_tags.append(sentence_pred_tags[sentence][name_position])
+            if pred_name[-1] in ENDING_PUNCTUATION:
+                pred_name = pred_name[:-1]
+                doc_name_position[1] -= 1
             pred_entities.append(NameEntity(name_entity_count, pred_name, pred_tag, doc_name_position))
             name_entity_count += 1
-            # print(pred_entities[-1])
         doc_entities += pred_entities
 
-
-
-        # import pdb; pdb.set_trace()
-        rel_count, relations = get_relations(rel_count, pred_entities)
-        # print(relations)
-        if relations is not None:
-            # print('--- relations')
-            # # print("----From sentence:\n" + sentence)
-            # for rel in relations:
-            #     print(rel)
-            doc_relations += relations
         cur_sentence_start += len(sentence) + 2
 
+
+    # Split recognized entities if they contain other recognized entities.
+    for idx in range(len(doc_entities)):
+        found_pos = find_entity_within(doc_entities[idx], doc_entities)
+        if found_pos is not None:
+            if found_pos[0] == 0:
+                found_name = doc_entities[idx].name[found_pos[0]: found_pos[1]]
+                found_span = [doc_entities[idx].span[0] + found_pos[0], \
+                                doc_entities[idx].span[0] + found_pos[1]]
+                doc_entities.append(NameEntity(name_entity_count, found_name, found_pos[2], found_span))
+
+                doc_entities[idx].name = doc_entities[idx].name[found_pos[1] + 1:]
+                doc_entities[idx].span[0] = doc_entities[idx].span[0] + found_pos[1] + 1
+            else:
+                found_name = doc_entities[idx].name[found_pos[0]: found_pos[1]]
+                found_span = [doc_entities[idx].span[0] + found_pos[0], \
+                                doc_entities[idx].span[0] + found_pos[1]]
+                doc_entities.append(NameEntity(name_entity_count, found_name, found_pos[2], found_span))
+
+                doc_entities[idx].name = doc_entities[idx].name[:found_pos[0] - 1]
+                doc_entities[idx].span[1] = doc_entities[idx].span[0] + found_pos[0] - 1
+                if doc_entities[idx].name[-1] in ENDING_PUNCTUATION:
+                    doc_entities[idx].name = doc_entities[idx].name[:-1]
+                    doc_entities[idx].span[1] -= 1
+
+            if doc_entities[idx].name.isupper():
+                doc_entities[idx].type = "ORG"
+            else:
+                doc_entities[idx].type = "PER"
+
+            name_entity_count += 1
+
+
+    # Write .ann file
     ann_path = sys.argv[1][:-4] + '.ann'
     ann_file = open(ann_path,'w')
-    for e in doc_entities:
-        ann_file.write(e.get_ann_str() + '\n')
-    for r in doc_relations:
-        ann_file.write(r.get_ann_str() + '\n')
+    for en in doc_entities:
+        ann_file.write(en.get_ann_str() + '\n')
     ann_file.close()

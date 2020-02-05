@@ -346,7 +346,24 @@ A summary of the report:
     I have implemented a very simple relation extraction algorithm, which is simply assigning name entities to the nearest person. But this already produces some reasonable results.
     Results are included in 'test_docs', those files are in BRAT annotation format. So, the relations can be viewed in BRAT, just like the original annotations.
 
+    Usage: $ python relation.py <text_file>
+
 
 Main purpose is to get info from a lot of doc that a person cannot go through mannully.
 1. corpus, with high levels and low levels, build a structure
 https://www.state.gov/wp-content/uploads/2019/12/FMT_Volume-I_FY2018_2019.pdf
+
+
+
+
+
+>>> Ian Ma, Jan 7 - Jan 22, 2020:
+----- Wrote:
+  Split relation.py into two files: ner.py and relation_<suffix>.py
+  ner.py is for producing the final result of modify NER and write the recognized name entities into a file that follows the BRAT annotation format.
+  Now ner.py can split recognized entities if they contain other recognized entities. E.g., Major General Arende can be split into Major General and Arende in a7105b41-1e5c-4d6b-8920-ebad5d9e068c.txt line 9.
+  relation_<suffix>.py is for relation extraction, moved to folder RE.
+
+----- Usage:
+  To run NER, use: $ python ner.py <text_file>
+  The result of this script will be placed under the same folder as <text_file> but with suffix ".ann"
