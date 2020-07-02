@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+<title>KGE</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+
+
+  <h1>Knowledge Graph Extraction</h1>
+  <h2>Input</h2>
+  <textarea name="paragraph_text" cols="80" rows="30"></textarea>
+  <br>
+  <button type="button">Extract Textbox Content</button>
+  <button type="button">Upload Files</button>
+  <button type="button">Extract from URL</button>
+
+  <br>
+  <div class="w3-container">
+    <h2>Output</h2>
+    <p>BRAT output, one tab for each method</p>
+  </div>
+
+  <div class="w3-bar w3-black">
+    <button class="w3-bar-item w3-button" onclick="openCity('London')">Nearest Person</button>
+    <button class="w3-bar-item w3-button" onclick="openCity('Paris')">Shortest Dependency Path</button>
+    <button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Neural Network</button>
+  </div>
+  <div id="London" class="city">
+    <h2>Nearest Person</h2>
+    <button type="button">Download BRAT Files</button>
+    <br><br>
+    <textarea name="paragraph_text" cols="80" rows="30"></textarea>
+  </div>
+
+  <div id="Paris" class="city" style="display:none">
+    <h2>Shortest Dependency Path</h2>
+    <button type="button">Download BRAT Files</button>
+    <br><br>
+    <textarea name="paragraph_text" cols="80" rows="30"></textarea>
+  </div>
+
+  <div id="Tokyo" class="city" style="display:none">
+    <h2>Neural Network</h2>
+    <button type="button">Download BRAT Files</button>
+    <br><br>
+    <textarea name="paragraph_text" cols="80" rows="30"></textarea>
+  </div>
+
+
+
+  <script>
+  function openCity(cityName) {
+    var i;
+    var x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(cityName).style.display = "block";
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,3615 @@
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 0...
+Saving checkpoints for 0 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 0...
+loss = 51.34026, step = 0
+global_step/sec: 14.3841
+loss = 6.309034, step = 100 (6.952 sec)
+global_step/sec: 16.9138
+loss = 11.640172, step = 200 (5.912 sec)
+global_step/sec: 18.2576
+loss = 6.95625, step = 300 (5.477 sec)
+global_step/sec: 17.3176
+loss = 3.6535163, step = 400 (5.774 sec)
+global_step/sec: 17.4235
+loss = 2.9033198, step = 500 (5.739 sec)
+global_step/sec: 16.6181
+loss = 2.2753768, step = 600 (6.017 sec)
+global_step/sec: 17.5798
+loss = 9.729497, step = 700 (5.688 sec)
+global_step/sec: 16.5666
+loss = 3.7283974, step = 800 (6.036 sec)
+global_step/sec: 17.7052
+loss = 1.6865101, step = 900 (5.648 sec)
+global_step/sec: 16.461
+loss = 2.105969, step = 1000 (6.075 sec)
+global_step/sec: 16.9019
+loss = 3.3258348, step = 1100 (5.916 sec)
+global_step/sec: 16.9746
+loss = 1.1075076, step = 1200 (5.891 sec)
+global_step/sec: 17.1969
+loss = 2.620374, step = 1300 (5.815 sec)
+global_step/sec: 17.4057
+loss = 1.2681304, step = 1400 (5.745 sec)
+global_step/sec: 17.6563
+loss = 2.4361997, step = 1500 (5.664 sec)
+global_step/sec: 16.1537
+loss = 1.9570415, step = 1600 (6.191 sec)
+global_step/sec: 16.9107
+loss = 3.6154275, step = 1700 (5.913 sec)
+global_step/sec: 17.6718
+loss = 1.3734334, step = 1800 (5.659 sec)
+global_step/sec: 17.7748
+loss = 2.9388983, step = 1900 (5.626 sec)
+Calling checkpoint listeners before saving checkpoint 1984...
+Saving checkpoints for 1984 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 1984...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T18:25:51Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-1984
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.16893s
+Finished evaluation at 2020-06-17-18:25:52
+Saving dict for global step 1984: acc = 0.7737438, f1 = 0.49118164, global_step = 1984, loss = 16.531788, precision = 0.47083685, recall = 0.5133641
+Saving 'checkpoint_path' summary for global step 1984: results/model/model.ckpt-1984
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+global_step/sec: 11.1246
+loss = 2.8473322, step = 2000 (8.989 sec)
+global_step/sec: 15.497
+loss = 0.7378336, step = 2100 (6.453 sec)
+global_step/sec: 16.1804
+loss = 1.7133586, step = 2200 (6.180 sec)
+global_step/sec: 18.1008
+loss = 0.94925034, step = 2300 (5.525 sec)
+global_step/sec: 16.6413
+loss = 1.3141133, step = 2400 (6.009 sec)
+global_step/sec: 16.6331
+loss = 1.7999067, step = 2500 (6.012 sec)
+global_step/sec: 16.5555
+loss = 1.2039163, step = 2600 (6.040 sec)
+global_step/sec: 17.5466
+loss = 0.6155018, step = 2700 (5.699 sec)
+global_step/sec: 18.0479
+loss = 1.1773202, step = 2800 (5.541 sec)
+global_step/sec: 15.2604
+loss = 5.6220922, step = 2900 (6.553 sec)
+global_step/sec: 16.6475
+loss = 1.0958391, step = 3000 (6.007 sec)
+global_step/sec: 17.4935
+loss = 0.7596911, step = 3100 (5.716 sec)
+global_step/sec: 17.0016
+loss = 0.80610275, step = 3200 (5.882 sec)
+global_step/sec: 17.7412
+loss = 0.92570627, step = 3300 (5.637 sec)
+global_step/sec: 17.4381
+loss = 0.6862279, step = 3400 (5.734 sec)
+global_step/sec: 16.6336
+loss = 1.0984913, step = 3500 (6.012 sec)
+global_step/sec: 16.6195
+loss = 0.91004103, step = 3600 (6.017 sec)
+global_step/sec: 16.696
+loss = 1.6867065, step = 3700 (5.990 sec)
+global_step/sec: 16.4147
+loss = 1.0190337, step = 3800 (6.091 sec)
+global_step/sec: 17.5031
+loss = 1.0026356, step = 3900 (5.713 sec)
+Calling checkpoint listeners before saving checkpoint 3953...
+Saving checkpoints for 3953 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 3953...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T18:27:51Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-3953
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.12494s
+Finished evaluation at 2020-06-17-18:27:53
+Saving dict for global step 3953: acc = 0.8332849, f1 = 0.6556522, global_step = 3953, loss = 11.097278, precision = 0.62057614, recall = 0.69493085
+Saving 'checkpoint_path' summary for global step 3953: results/model/model.ckpt-3953
+global_step/sec: 11.7496
+loss = 0.61620677, step = 4000 (8.511 sec)
+global_step/sec: 15.9254
+loss = 0.52370965, step = 4100 (6.280 sec)
+global_step/sec: 17.8878
+loss = 1.4660498, step = 4200 (5.590 sec)
+global_step/sec: 17.6504
+loss = 0.5855006, step = 4300 (5.666 sec)
+global_step/sec: 15.5458
+loss = 2.9120617, step = 4400 (6.433 sec)
+global_step/sec: 17.8039
+loss = 1.3206602, step = 4500 (5.617 sec)
+global_step/sec: 17.3095
+loss = 0.29136664, step = 4600 (5.777 sec)
+global_step/sec: 16.9496
+loss = 0.4860332, step = 4700 (5.900 sec)
+global_step/sec: 17.8362
+loss = 0.39105305, step = 4800 (5.607 sec)
+global_step/sec: 18.5068
+loss = 0.6896672, step = 4900 (5.403 sec)
+global_step/sec: 15.7823
+loss = 1.2714468, step = 5000 (6.336 sec)
+global_step/sec: 17.2133
+loss = 1.1773063, step = 5100 (5.809 sec)
+global_step/sec: 17.3417
+loss = 0.6222056, step = 5200 (5.766 sec)
+global_step/sec: 16.716
+loss = 0.35966772, step = 5300 (5.982 sec)
+global_step/sec: 17.2066
+loss = 0.63687104, step = 5400 (5.812 sec)
+global_step/sec: 16.6211
+loss = 1.5271862, step = 5500 (6.016 sec)
+global_step/sec: 16.3006
+loss = 1.2213871, step = 5600 (6.135 sec)
+global_step/sec: 16.8854
+loss = 1.3966544, step = 5700 (5.923 sec)
+global_step/sec: 18.4745
+loss = 0.37447006, step = 5800 (5.412 sec)
+global_step/sec: 16.6372
+loss = 0.54585445, step = 5900 (6.011 sec)
+Calling checkpoint listeners before saving checkpoint 5956...
+Saving checkpoints for 5956 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 5956...
+Skip the current checkpoint eval due to throttle secs (120 secs).
+global_step/sec: 17.4262
+loss = 1.4604261, step = 6000 (5.739 sec)
+global_step/sec: 15.1792
+loss = 1.3192513, step = 6100 (6.588 sec)
+global_step/sec: 16.2749
+loss = 0.78188556, step = 6200 (6.144 sec)
+global_step/sec: 16.4554
+loss = 0.56543005, step = 6300 (6.077 sec)
+global_step/sec: 17.9989
+loss = 1.0334789, step = 6400 (5.556 sec)
+global_step/sec: 17.9342
+loss = 1.784687, step = 6500 (5.576 sec)
+global_step/sec: 16.3991
+loss = 4.5151877, step = 6600 (6.098 sec)
+global_step/sec: 17.0046
+loss = 0.7213205, step = 6700 (5.881 sec)
+global_step/sec: 17.9613
+loss = 0.85480344, step = 6800 (5.568 sec)
+global_step/sec: 17.1593
+loss = 0.55128396, step = 6900 (5.828 sec)
+global_step/sec: 17.1493
+loss = 1.785051, step = 7000 (5.831 sec)
+global_step/sec: 16.6869
+loss = 1.9267696, step = 7100 (5.993 sec)
+global_step/sec: 18.8106
+loss = 0.84605634, step = 7200 (5.316 sec)
+global_step/sec: 16.0814
+loss = 1.154323, step = 7300 (6.218 sec)
+global_step/sec: 18.2493
+loss = 1.1286573, step = 7400 (5.480 sec)
+global_step/sec: 15.8873
+loss = 1.1616299, step = 7500 (6.294 sec)
+global_step/sec: 18.3249
+loss = 1.0774773, step = 7600 (5.457 sec)
+global_step/sec: 16.9515
+loss = 1.4610386, step = 7700 (5.899 sec)
+global_step/sec: 16.7171
+loss = 1.1812108, step = 7800 (5.982 sec)
+global_step/sec: 17.3665
+loss = 0.3636616, step = 7900 (5.758 sec)
+Calling checkpoint listeners before saving checkpoint 7997...
+Saving checkpoints for 7997 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 7997...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T18:31:51Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-7997
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.13862s
+Finished evaluation at 2020-06-17-18:31:52
+Saving dict for global step 7997: acc = 0.8634911, f1 = 0.72789997, global_step = 7997, loss = 9.026933, precision = 0.6839546, recall = 0.7778802
+Saving 'checkpoint_path' summary for global step 7997: results/model/model.ckpt-7997
+global_step/sec: 11.7203
+loss = 0.56254363, step = 8000 (8.533 sec)
+global_step/sec: 16.7569
+loss = 0.6796585, step = 8100 (5.967 sec)
+global_step/sec: 15.9953
+loss = 1.6834652, step = 8200 (6.252 sec)
+global_step/sec: 18.1862
+loss = 0.6175633, step = 8300 (5.499 sec)
+global_step/sec: 16.3047
+loss = 0.9616806, step = 8400 (6.133 sec)
+global_step/sec: 18.5486
+loss = 1.0599197, step = 8500 (5.391 sec)
+global_step/sec: 18.1697
+loss = 0.70427084, step = 8600 (5.504 sec)
+global_step/sec: 16.71
+loss = 0.93356526, step = 8700 (5.984 sec)
+global_step/sec: 16.9903
+loss = 1.2825875, step = 8800 (5.886 sec)
+global_step/sec: 17.1379
+loss = 0.8028139, step = 8900 (5.835 sec)
+global_step/sec: 16.7703
+loss = 0.97978485, step = 9000 (5.963 sec)
+global_step/sec: 17.2639
+loss = 1.8651104, step = 9100 (5.792 sec)
+global_step/sec: 17.1405
+loss = 0.5773793, step = 9200 (5.834 sec)
+global_step/sec: 17.1105
+loss = 2.4183476, step = 9300 (5.844 sec)
+global_step/sec: 17.8166
+loss = 1.129617, step = 9400 (5.613 sec)
+global_step/sec: 17.3001
+loss = 0.66302764, step = 9500 (5.780 sec)
+global_step/sec: 18.39
+loss = 0.38535652, step = 9600 (5.438 sec)
+global_step/sec: 17.9871
+loss = 2.3695455, step = 9700 (5.560 sec)
+global_step/sec: 17.6648
+loss = 1.2467382, step = 9800 (5.661 sec)
+global_step/sec: 15.7486
+loss = 0.39376917, step = 9900 (6.350 sec)
+global_step/sec: 19.0074
+loss = 0.47106838, step = 10000 (5.261 sec)
+Calling checkpoint listeners before saving checkpoint 10024...
+Saving checkpoints for 10024 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 10024...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T18:33:51Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-10024
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.14738s
+Finished evaluation at 2020-06-17-18:33:53
+Saving dict for global step 10024: acc = 0.89253557, f1 = 0.792936, global_step = 10024, loss = 8.155768, precision = 0.76101696, recall = 0.8276498
+Saving 'checkpoint_path' summary for global step 10024: results/model/model.ckpt-10024
+global_step/sec: 11.0438
+loss = 1.0471227, step = 10100 (9.055 sec)
+global_step/sec: 16.0673
+loss = 0.66052634, step = 10200 (6.224 sec)
+global_step/sec: 17.1799
+loss = 0.8520864, step = 10300 (5.821 sec)
+Calling checkpoint listeners before saving checkpoint 10303...
+Saving checkpoints for 10303 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 10303...
+Skip the current checkpoint eval due to throttle secs (120 secs).
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T18:34:11Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-10303
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.14985s
+Finished evaluation at 2020-06-17-18:34:12
+Saving dict for global step 10303: acc = 0.8887598, f1 = 0.7827994, global_step = 10303, loss = 8.26269, precision = 0.7470687, recall = 0.82211983
+Saving 'checkpoint_path' summary for global step 10303: results/model/model.ckpt-10303
+Loss for final step: 0.25321198.
+Calling model_fn.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-10303
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 10303...
+Saving checkpoints for 10303 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 10303...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+loss = 1.4567397, step = 10303
+global_step/sec: 12.9901
+loss = 0.46133286, step = 10403 (7.593 sec)
+global_step/sec: 15.8996
+loss = 0.41703853, step = 10503 (6.287 sec)
+global_step/sec: 15.8116
+loss = 0.2875546, step = 10603 (6.325 sec)
+global_step/sec: 17.3975
+loss = 1.3733599, step = 10703 (5.747 sec)
+global_step/sec: 16.9487
+loss = 1.2526774, step = 10803 (5.900 sec)
+global_step/sec: 16.2445
+loss = 0.7109314, step = 10903 (6.157 sec)
+global_step/sec: 18.0764
+loss = 1.6659553, step = 11003 (5.531 sec)
+global_step/sec: 15.703
+loss = 0.3883429, step = 11103 (6.369 sec)
+global_step/sec: 13.3287
+loss = 0.9941241, step = 11203 (7.502 sec)
+global_step/sec: 17.5025
+loss = 0.77173954, step = 11303 (5.713 sec)
+global_step/sec: 17.9356
+loss = 0.50664765, step = 11403 (5.576 sec)
+global_step/sec: 16.5374
+loss = 0.75612724, step = 11503 (6.047 sec)
+global_step/sec: 17.4845
+loss = 0.62033516, step = 11603 (5.719 sec)
+global_step/sec: 17.4406
+loss = 0.936273, step = 11703 (5.734 sec)
+global_step/sec: 15.4531
+loss = 0.51644325, step = 11803 (6.471 sec)
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-10303
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 10303...
+Saving checkpoints for 10303 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 10303...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+loss = 1.6166565, step = 10303
+global_step/sec: 14.1074
+loss = 0.4360288, step = 10403 (6.981 sec)
+global_step/sec: 15.7744
+loss = 0.2605973, step = 10503 (6.339 sec)
+global_step/sec: 18.1236
+loss = 0.9488657, step = 10603 (5.518 sec)
+global_step/sec: 17.1209
+loss = 0.8558197, step = 10703 (5.841 sec)
+global_step/sec: 16.8717
+loss = 0.5948363, step = 10803 (5.927 sec)
+global_step/sec: 17.1609
+loss = 1.0221498, step = 10903 (5.827 sec)
+global_step/sec: 17.8008
+loss = 1.1708413, step = 11003 (5.618 sec)
+global_step/sec: 18.2468
+loss = 0.2397294, step = 11103 (5.480 sec)
+global_step/sec: 17.6124
+loss = 0.16576533, step = 11203 (5.678 sec)
+global_step/sec: 16.8414
+loss = 0.7089957, step = 11303 (5.938 sec)
+global_step/sec: 17.6133
+loss = 0.76922643, step = 11403 (5.678 sec)
+global_step/sec: 17.4348
+loss = 0.7973381, step = 11503 (5.736 sec)
+global_step/sec: 17.7936
+loss = 0.92421883, step = 11603 (5.620 sec)
+global_step/sec: 18.297
+loss = 0.5880537, step = 11703 (5.465 sec)
+global_step/sec: 16.7564
+loss = 1.7688307, step = 11803 (5.968 sec)
+global_step/sec: 17.3366
+loss = 1.0892439, step = 11903 (5.768 sec)
+global_step/sec: 16.2623
+loss = 0.48188835, step = 12003 (6.149 sec)
+global_step/sec: 16.0963
+loss = 1.2021322, step = 12103 (6.213 sec)
+global_step/sec: 17.6015
+loss = 0.42951006, step = 12203 (5.681 sec)
+Calling checkpoint listeners before saving checkpoint 12284...
+Saving checkpoints for 12284 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12284...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T18:52:06Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12284
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.16110s
+Finished evaluation at 2020-06-17-18:52:07
+Saving dict for global step 12284: acc = 0.8945687, f1 = 0.79756206, global_step = 12284, loss = 7.920419, precision = 0.7557756, recall = 0.84423965
+Saving 'checkpoint_path' summary for global step 12284: results/model/model.ckpt-12284
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (50) configured for early stopping.
+Requesting early stopping at global step 12296
+Calling checkpoint listeners before saving checkpoint 12297...
+Saving checkpoints for 12297 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12297...
+Skip the current checkpoint eval due to throttle secs (120 secs).
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T18:52:11Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12297
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.18329s
+Finished evaluation at 2020-06-17-18:52:12
+Saving dict for global step 12297: acc = 0.8919547, f1 = 0.7953368, global_step = 12297, loss = 8.098682, precision = 0.7481722, recall = 0.8488479
+Saving 'checkpoint_path' summary for global step 12297: results/model/model.ckpt-12297
+Loss for final step: 0.721995.
+Calling model_fn.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12297
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 12297...
+Saving checkpoints for 12297 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12297...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (50) configured for early stopping.
+Requesting early stopping at global step 12297
+loss = 0.51975477, step = 12297
+Calling checkpoint listeners before saving checkpoint 12298...
+Saving checkpoints for 12298 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12298...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T18:55:46Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12298
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.22616s
+Finished evaluation at 2020-06-17-18:55:47
+Saving dict for global step 12298: acc = 0.8922451, f1 = 0.79568034, global_step = 12298, loss = 8.0845585, precision = 0.7487805, recall = 0.8488479
+Saving 'checkpoint_path' summary for global step 12298: results/model/model.ckpt-12298
+Loss for final step: 0.51975477.
+Calling model_fn.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12298
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 12298...
+Saving checkpoints for 12298 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12298...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (5) configured for early stopping.
+Requesting early stopping at global step 12298
+loss = 2.037188, step = 12298
+Calling checkpoint listeners before saving checkpoint 12299...
+Saving checkpoints for 12299 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12299...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T20:16:06Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12299
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.21033s
+Finished evaluation at 2020-06-17-20:16:07
+Saving dict for global step 12299: acc = 0.89166427, f1 = 0.7942956, global_step = 12299, loss = 8.075918, precision = 0.7477624, recall = 0.8470046
+Saving 'checkpoint_path' summary for global step 12299: results/model/model.ckpt-12299
+Loss for final step: 2.037188.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12299
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 12299...
+Saving checkpoints for 12299 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12299...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (5) configured for early stopping.
+Requesting early stopping at global step 12299
+loss = 1.0890679, step = 12299
+Calling checkpoint listeners before saving checkpoint 12300...
+Saving checkpoints for 12300 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12300...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T20:16:56Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12300
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.20965s
+Finished evaluation at 2020-06-17-20:16:57
+Saving dict for global step 12300: acc = 0.8913738, f1 = 0.79377437, global_step = 12300, loss = 8.080084, precision = 0.747557, recall = 0.8460829
+Saving 'checkpoint_path' summary for global step 12300: results/model/model.ckpt-12300
+Loss for final step: 1.0890679.
+Calling model_fn.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12300
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 12300...
+Saving checkpoints for 12300 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12300...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (5) configured for early stopping.
+Requesting early stopping at global step 12300
+loss = 0.9329618, step = 12300
+Calling checkpoint listeners before saving checkpoint 12301...
+Saving checkpoints for 12301 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12301...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T20:20:06Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12301
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.21848s
+Finished evaluation at 2020-06-17-20:20:07
+Saving dict for global step 12301: acc = 0.8913738, f1 = 0.79377437, global_step = 12301, loss = 8.081712, precision = 0.747557, recall = 0.8460829
+Saving 'checkpoint_path' summary for global step 12301: results/model/model.ckpt-12301
+Loss for final step: 0.9329618.
+Calling model_fn.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12301
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 12301...
+Saving checkpoints for 12301 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12301...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (5) configured for early stopping.
+Requesting early stopping at global step 12301
+loss = 0.48871797, step = 12301
+Calling checkpoint listeners before saving checkpoint 12302...
+Saving checkpoints for 12302 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12302...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T20:28:16Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12302
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.23080s
+Finished evaluation at 2020-06-17-20:28:17
+Saving dict for global step 12302: acc = 0.89108336, f1 = 0.7934312, global_step = 12302, loss = 8.085834, precision = 0.7469487, recall = 0.8460829
+Saving 'checkpoint_path' summary for global step 12302: results/model/model.ckpt-12302
+Loss for final step: 0.48871797.
+Calling model_fn.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12302
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 12302...
+Saving checkpoints for 12302 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12302...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (5) configured for early stopping.
+Requesting early stopping at global step 12302
+loss = 0.35901198, step = 12302
+Calling checkpoint listeners before saving checkpoint 12303...
+Saving checkpoints for 12303 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12303...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T20:29:14Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12303
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.23055s
+Finished evaluation at 2020-06-17-20:29:15
+Saving dict for global step 12303: acc = 0.89108336, f1 = 0.7934312, global_step = 12303, loss = 8.097542, precision = 0.7469487, recall = 0.8460829
+Saving 'checkpoint_path' summary for global step 12303: results/model/model.ckpt-12303
+Loss for final step: 0.35901198.
+Calling model_fn.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+From train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12303
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 12303...
+Saving checkpoints for 12303 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12303...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (5) configured for early stopping.
+Requesting early stopping at global step 12303
+loss = 0.9044212, step = 12303
+Calling checkpoint listeners before saving checkpoint 12304...
+Saving checkpoints for 12304 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12304...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-17T20:30:11Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.13694s
+Finished evaluation at 2020-06-17-20:30:12
+Saving dict for global step 12304: acc = 0.8907929, f1 = 0.7929097, global_step = 12304, loss = 8.110926, precision = 0.74674267, recall = 0.8451613
+Saving 'checkpoint_path' summary for global step 12304: results/model/model.ckpt-12304
+Loss for final step: 0.9044212.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+From /Users/ianma/Google Drive/KGE/NER_v2/train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+From /Users/ianma/Google Drive/KGE/NER_v2/train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+From /Users/ianma/Google Drive/KGE/NER_v2/train.py:110: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/masked_conv.py:46: conv1d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv1D` instead.
+From /Users/ianma/Google Drive/KGE/NER_v2/train.py:141: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+From /Users/ianma/Google Drive/KGE/NER_v2/train.py:127: dropout (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dropout instead.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/layers/core.py:271: Layer.apply (from tensorflow.python.keras.engine.base_layer_v1) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': './results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from ./results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+Running local_init_op.
+Done running local_init_op.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 120, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Not using Distribute Coordinator.
+Running training and evaluation locally (non-distributed).
+Start train and evaluate loop. The evaluate will happen after every checkpoint. Checkpoint frequency is determined based on RunConfig arguments: save_checkpoints_steps None or save_checkpoints_secs 120.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/training_util.py:236: Variable.initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+Calling model_fn.
+Done calling model_fn.
+Create CheckpointSaverHook.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12304
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1077: get_checkpoint_mtimes (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file utilities to get mtimes.
+Running local_init_op.
+Done running local_init_op.
+Calling checkpoint listeners before saving checkpoint 12304...
+Saving checkpoints for 12304 into results/model/model.ckpt.
+Calling checkpoint listeners after saving checkpoint 12304...
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/summary/summary_iterator.py:68: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+No decrease in metric "f1" for 1981 steps, which is greater than or equal to max steps (500) configured for early stopping.
+Requesting early stopping at global step 12304
+loss = 0.82456845, step = 12304
+Calling checkpoint listeners before saving checkpoint 12305...
+Saving checkpoints for 12305 into results/model/model.ckpt.
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/training/saver.py:971: remove_checkpoint (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to delete files with this prefix.
+Calling checkpoint listeners after saving checkpoint 12305...
+Calling model_fn.
+Done calling model_fn.
+Starting evaluation at 2020-06-19T15:32:36Z
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Inference Time : 1.24561s
+Finished evaluation at 2020-06-19-15:32:38
+Saving dict for global step 12305: acc = 0.89050245, f1 = 0.79256696, global_step = 12305, loss = 8.121185, precision = 0.74613506, recall = 0.8451613
+Saving 'checkpoint_path' summary for global step 12305: results/model/model.ckpt-12305
+Loss for final step: 0.82456845.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Using default config.
+Using config: {'_model_dir': 'results/model', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+graph_options {
+  rewrite_options {
+    meta_optimizer_iterations: ONE
+  }
+}
+, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100, '_train_distribute': None, '_device_fn': None, '_protocol': None, '_eval_distribute': None, '_experimental_distribute': None, '_experimental_max_worker_delay_secs': None, '_session_creation_timeout_secs': 7200, '_service': None, '_cluster_spec': ClusterSpec({}), '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+From /Users/ianma/anaconda3/envs/nlp/lib/python3.6/site-packages/tensorflow/python/ops/resource_variable_ops.py:1666: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
+Input graph does not use tf.data.Dataset or contain a QueueRunner. That means predict yields forever. This is probably a mistake.
+Calling model_fn.
+Done calling model_fn.
+Graph was finalized.
+Restoring parameters from results/model/model.ckpt-12305
+Running local_init_op.
+Done running local_init_op.
