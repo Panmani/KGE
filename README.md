@@ -33,8 +33,9 @@ Then run the python file. This may take a while to finish.
 
 ### Method 2
 
-Download this Github repository
-Under the project root directory, run the python script
+1. Download this Github repository
+2. Unzip the file RE/jPTDP-master.zip
+3. Under the project root directory, run the python script
 
 ```shell
 $ python pipeline.py /PATH/TO/DIRECTORY/OF/INPUT/FILES
