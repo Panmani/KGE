@@ -6,7 +6,7 @@ from data import *
 from path import *
 from config import *
 
-sys.path.insert(1, '../../NER')
+sys.path.insert(1, '../../NER_v2')
 from ne_def import *
 from eval import *
 
