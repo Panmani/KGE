@@ -3,7 +3,7 @@ import numpy as np
 sys.path.insert(1, '../utils')
 from path import *
 import parse
-sys.path.insert(1, '../../NER')
+sys.path.insert(1, '../../NER_v2')
 from ne_def import *
 from config import *
 

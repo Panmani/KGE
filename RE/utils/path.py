@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.insert(1, '../../NER')
+sys.path.insert(1, '../../NER_v2')
 from ne_def import *
 
 

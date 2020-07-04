@@ -37,20 +37,26 @@ if __name__ == "__main__":
     all_patterns = pickle.load(open(patterns_filename, "rb"))
     new_model = keras.models.load_model(model_path, custom_objects={'PatTypeOH': PatTypeOH})
 
-    pred_filenames = os.listdir(pred_path)
+    if len(sys.argv) < 2:
+        print("Type in the path to the input directory (use absolute path).")
+        exit()
+
+    input_dir = sys.argv[1]
+
+    pred_filenames = os.listdir(input_dir)
     pred_doc_ids = []
     for fn in pred_filenames:
         if fn[-3:] == "ann":
-            with open(os.path.join(pred_path, fn), 'r') as pfile:
+            with open(os.path.join(input_dir, fn), 'r') as pfile:
                 pred_doc_ids.append(fn[:-4])
 
     dataset = []
     for doc_id in pred_doc_ids:
         print(doc_id)
 
-        buffer_path = os.path.join(pred_path, doc_id)
-        txt_path = os.path.join(pred_path, doc_id + ".txt")
-        ann_path = os.path.join(pred_path, doc_id + ".ann")
+        buffer_path = os.path.join(input_dir, doc_id)
+        txt_path = os.path.join(input_dir, doc_id + ".txt")
+        ann_path = os.path.join(input_dir, doc_id + ".ann.nn")
 
         all_persons, all_others, _ = get_ne_rl(ann_path)
         all_lines = get_lines(txt_path)
@@ -118,33 +124,6 @@ if __name__ == "__main__":
                             if cur_dist is not None and cur_dist < min_dist:
                                 min_dist = cur_dist
                                 best_per = per
-
-                    # nearest_persons = []
-                    # stn_split_punc = ";"
-                    # if left_person is not None:
-                    #     txt_between_span = [left_person.span[1] - sentence_start, ne.span[0] - sentence_start]
-                    #     txt_between = all_lines[line_count][txt_between_span[0]: txt_between_span[1]]
-                    #     if not is_diff_stn(stn_split_punc, txt_between):
-                    #         nearest_persons.append(left_person)
-                    # if right_person is not None:
-                    #     txt_between_span = [ne.span[1] - sentence_start, right_person.span[0] - sentence_start]
-                    #     txt_between = all_lines[line_count][txt_between_span[0]: txt_between_span[1]]
-                    #     if not is_diff_stn(stn_split_punc, txt_between):
-                    #         nearest_persons.append(right_person)
-                    #
-                    # for per_idx, per in enumerate(nearest_persons):
-                    #     per_sentence_span = [per.span[0] - sentence_start, per.span[1] - sentence_start]
-                    #     ne = get_name_entity(ot_id, all_others)
-                    #     ne_sentence_span = [ne.span[0] - sentence_start, ne.span[1] - sentence_start]
-                    #     cur_dist = parse.get_entity_distance(parse_tree, ne_sentence_span, per_sentence_span)
-                    #     if cur_dist is not None and cur_dist < min_dist:
-                    #         min_dist = cur_dist
-                    #         best_per = per
-
-                # print(best_per)
-                # best_per = None
-                # if len(per_ne_list) > 0 and per_ne_idx < len(per_ne_list):
-                #     best_per = per_ne_list[per_ne_idx]
 
                 if best_per is not None:
                     ne = get_name_entity(ot_id, all_others)

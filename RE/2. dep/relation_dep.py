@@ -1,5 +1,5 @@
 import os, sys
-sys.path.insert(1, '../../NER')
+sys.path.insert(1, '../../NER_v2')
 from ne_def import *
 sys.path.insert(1, '../utils')
 import parse

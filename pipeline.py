@@ -52,8 +52,8 @@ if __name__ == "__main__":
                         parse_input = os.path.join(input_dir, id, str(line_count) + ".txt.conllu")
                         parse_output = parse_input + ".pred"
 
-                        subprocess.Popen([python_bin, converter_file, line_path])
-                        subprocess.Popen([python_bin, script_file, "--predict", \
+                        subprocess.call([python_bin, converter_file, line_path])
+                        subprocess.call([python_bin, script_file, "--predict", \
                             "--model", jPTDP_model_path, "--params", jPTDP_params_path, \
                             "--test", parse_input, "--outdir", input_dir, "--output", parse_output])
 
@@ -63,12 +63,12 @@ if __name__ == "__main__":
         os.chdir(os.path.join(cwd, RE_dir, "2. dep"))
         for id in input_ids:
             parse_dir = os.path.join(input_dir, id)
-            subprocess.Popen(["cp", parse_dir + ".ann", parse_dir + ".ann.sdp"])
-            subprocess.Popen(["python", "relation_dep.py", parse_dir, parse_dir + ".txt", parse_dir + ".ann.sdp"])
+            subprocess.call(["cp", parse_dir + ".ann", parse_dir + ".ann.sdp"])
+            subprocess.call(["python", "relation_dep.py", parse_dir, parse_dir + ".txt", parse_dir + ".ann.sdp"])
 
 
         os.chdir(os.path.join(cwd, RE_dir, "3. nn"))
         for id in input_ids:
             parse_dir = os.path.join(input_dir, id)
-            subprocess.Popen(["cp", parse_dir + ".ann", parse_dir + ".ann.nn"])
-        subprocess.Popen(["python", "relation_nn.py", input_dir])
+            subprocess.call(["cp", parse_dir + ".ann", parse_dir + ".ann.nn"])
+        subprocess.call(["python", "relation_nn.py", input_dir])
