@@ -4,7 +4,7 @@ from parse_script import *
 
 NER_dir = "NER_v2"
 RE_dir = "RE"
-PIPELINE_PARTS = [True, True, True] # Whether to run a part of the pipeline: [NER, DEP_PARSE, RE]
+PIPELINE_PARTS = [True, True, True, True] # Whether to run a part of the pipeline: [NER, DEP_PARSE, RE, CLEAN_UP]
 
 if __name__ == "__main__":
 
@@ -60,15 +60,35 @@ if __name__ == "__main__":
                         line_count += 1
 
     if PIPELINE_PARTS[2]:
+        SDP_dir = "SDP"
+        subprocess.call(["mkdir", os.path.join(input_dir, SDP_dir)])
+        # subprocess.call(["cp", os.path.join(input_dir, "*.txt"), os.path.join(input_dir, SDP_dir)])
+        # subprocess.call(["cp", os.path.join(input_dir, "*.ann"), os.path.join(input_dir, SDP_dir)])
         os.chdir(os.path.join(cwd, RE_dir, "2. dep"))
         for id in input_ids:
             parse_dir = os.path.join(input_dir, id)
-            subprocess.call(["cp", parse_dir + ".ann", parse_dir + ".ann.sdp"])
-            subprocess.call(["python", "relation_dep.py", parse_dir, parse_dir + ".txt", parse_dir + ".ann.sdp"])
+            subprocess.call(["cp", parse_dir + ".txt", os.path.join(input_dir, SDP_dir)])
+            subprocess.call(["cp", parse_dir + ".ann", os.path.join(input_dir, SDP_dir)])
+            # subprocess.call(["cp", "-r", parse_dir, os.path.join(input_dir, SDP_dir)])
+            subprocess.call(["python", "relation_dep.py", parse_dir, os.path.join(input_dir, SDP_dir, id+".txt"), os.path.join(input_dir, SDP_dir, id+".ann")])
 
 
+        NN_dir = "NN"
+        subprocess.call(["mkdir", os.path.join(input_dir, NN_dir)])
+        # subprocess.call(["cp", os.path.join(input_dir, "*.txt"), os.path.join(input_dir, SDP_dir)])
+        # subprocess.call(["cp", os.path.join(input_dir, "*.ann"), os.path.join(input_dir, SDP_dir)])
         os.chdir(os.path.join(cwd, RE_dir, "3. nn"))
         for id in input_ids:
             parse_dir = os.path.join(input_dir, id)
-            subprocess.call(["cp", parse_dir + ".ann", parse_dir + ".ann.nn"])
-        subprocess.call(["python", "relation_nn.py", input_dir])
+            subprocess.call(["cp", parse_dir + ".txt", os.path.join(input_dir, NN_dir)])
+            subprocess.call(["cp", parse_dir + ".ann", os.path.join(input_dir, NN_dir)])
+            subprocess.call(["cp", "-r", parse_dir, os.path.join(input_dir, NN_dir)])
+        #     subprocess.call(["cp", parse_dir + ".ann", parse_dir + ".ann.nn"])
+        subprocess.call(["python", "relation_nn.py", os.path.join(input_dir, NN_dir)])
+
+    if PIPELINE_PARTS[3]:
+        for id in input_ids:
+            subprocess.call(["rm", os.path.join(input_dir, id + ".ann")])
+            subprocess.call(["rm", os.path.join(input_dir, id + ".txt")])
+            subprocess.call(["rm", "-r", os.path.join(input_dir, id)])
+            subprocess.call(["rm", "-r", os.path.join(input_dir, NN_dir, id)])

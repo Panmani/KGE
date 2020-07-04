@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
         buffer_path = os.path.join(input_dir, doc_id)
         txt_path = os.path.join(input_dir, doc_id + ".txt")
-        ann_path = os.path.join(input_dir, doc_id + ".ann.nn")
+        ann_path = os.path.join(input_dir, doc_id + ".ann")
 
         all_persons, all_others, _ = get_ne_rl(ann_path)
         all_lines = get_lines(txt_path)
