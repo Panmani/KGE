@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+<title>KGE</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!-- BRAT Viewer Dependency -->
+<script type="text/javascript" src="js/head.js"></script>
+<script type="text/javascript" src="js/brat_loader.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" type="text/css" href="css/style-vis.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="pre-navbar">
+    <p>A tool from <a href="https://securityforcemonitor.org">Security Force Monitor</a></p>
+  </div>
+
+  <div class="kge_title">
+    <a>Knowledge Graph <strong>Extraction</strong></a>
+  </div>
+
+  <div class="w3-container input_area">
+    <textarea name="the-textarea" id="input_txtbox" maxlength="1024" placeholder="Type input here..."></textarea>
+    <div class="loader" id="processing_kge"></div>
+    <button type="button" id="extract_btn" class="after_loading">Extract</button>
+    <nobr id="the-count" class="after_loading">
+      <span id="current">0</span>
+      <span id="maximum">/ 1000</span>
+    </nobr>
+  </div>
+
+  <hr>
+
+  <div class="w3-container">
+    <form action="upload" method="post" enctype="multipart/form-data" id="input_form" class="after_loading">
+      Or you can upload a text file (.txt):
+      <br>
+      <label for="file_selected" id="file_selection_label">Select a text file...</label>
+      <input name="inputfile" type="file" id="file_selected">
+      <label for="file_submit" id="file_submit_label">Upload</label>
+      <input type="submit" name="submit" id="file_submit">
+    </form>
+  </div>
+
+  <hr>
+
+  <!-- OUTPUT -->
+  <div class="w3-container">
+    <div id="load_warning">It takes several seconds to load the brat visualizers</div>
+  </div>
+
+  <!-- <div id="wrapper">
+
+    <div id="left">
+      <h3> Shortest Dependency Path </h3>
+      <div class = "io_area" id="SDP_graph"></div>
+    </div>
+
+    <div id="right">
+      <h3> Neural Network </h3>
+      <div class = "io_area" id="NN_graph"></div>
+    </div>
+
+  </div> -->
+
+
+  <div style="width: 100%; overflow: hidden;" class="w3-container">
+      <div style="width: 48%; float: left;">
+        <h3> Shortest Dependency Path </h3>
+        <div class="loader brat_loading"></div>
+        <div class = "io_area" id="SDP_graph"></div>
+      </div>
+      <div style="width: 48%; margin-left: 52%;">
+        <h3> Neural Network </h3>
+        <div class="loader brat_loading"></div>
+        <div class = "io_area" id="NN_graph"></div>
+      </div>
+  </div>
+
+  <!-- <section class="indent-1">
+      <section>
+        <div id="SDP_graph"></div>
+      </section>
+
+      <section>
+        <div id="NN_graph"></div>
+      </section>
+  </section> -->
+
+  <!-- <div class="row">
+    <div class="column">
+      <div id="SDP_graph"></div>
+    </div>
+    <div class="column">
+      <div id="NN_graph"></div>
+    </div>
+  </div> -->
+  <!-- <div class="w3-bar w3-black">
+    <button class="w3-bar-item w3-button" onclick="openCity('London')">Nearest Person</button>
+    <button class="w3-bar-item w3-button" onclick="openCity('Paris')">Shortest Dependency Path</button>
+    <button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Neural Network</button>
+  </div>
+  <div id="London" class="city">
+    <h2>Nearest Person</h2>
+    <button type="button">Download BRAT Files</button>
+    <br><br>
+    <div id="SDP_graph"></div>
+  </div>
+
+  <div id="Paris" class="city" style="display:none">
+    <h2>Shortest Dependency Path</h2>
+    <button type="button">Download BRAT Files</button>
+    <br><br>
+    <div id="NN_graph"></div>
+  </div>
+
+  <div id="Tokyo" class="city" style="display:none">
+    <h2>Neural Network</h2>
+    <button type="button">Download BRAT Files</button>
+    <br><br>
+    <textarea name="paragraph_text" cols="80" rows="30"></textarea>
+  </div> -->
+
+  <br>
+  <br>
+  <br>
+
+
+</body>
+</html>
