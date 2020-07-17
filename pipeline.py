@@ -4,12 +4,12 @@ from parse_script import *
 
 NER_dir = "NER_v2"
 RE_dir = "RE"
-PIPELINE_PARTS = [True, True, True, True] # Whether to run a part of the pipeline: [NER, DEP_PARSE, RE, CLEAN_UP]
+PIPELINE_PARTS = [True, True, True, False] # Whether to run a part of the pipeline: [NER, DEP_PARSE, RE, CLEAN_UP]
 
 if __name__ == "__main__":
 
     if len(sys.argv) < 2:
-        print("Type in the path to the input directory (use absolute path).")
+        print("Type in the path to the input directory (use absolute path and cannot include [space]).")
         exit()
 
     cwd = os.getcwd()
@@ -27,37 +27,39 @@ if __name__ == "__main__":
         os.chdir(ner_path)
         for id in input_ids:
             txt_path = os.path.join(input_dir, id + ".txt")
-            os.system("python " + "ner.py " + txt_path)
-
+            # os.system("python " + "ner.py " + txt_path)
+            subprocess.call(["python", "ner.py", txt_path])
 
     # ============================== Dependency Parsing ==============================
     if PIPELINE_PARTS[1]:
+        os.chdir(os.path.join(cwd, RE_dir, "jPTDP-master"))
         python_bin = os.path.join(cwd, RE_dir, "jPTDP-master/.DyNet/bin/python")
-        script_file = os.path.join(cwd, RE_dir, "jPTDP-master/jPTDP.py")
-        converter_file = os.path.join(cwd, RE_dir, "jPTDP-master/utils/converter.py")
-        jPTDP_model_path = os.path.join(cwd, RE_dir, "jPTDP-master/sample/model256")
-        jPTDP_params_path = os.path.join(cwd, RE_dir, "jPTDP-master/sample/model256.params")
-
+        script_file = os.path.join(cwd, RE_dir, "jPTDP-master/fast_parse.py")
+        # converter_file = os.path.join(cwd, RE_dir, "jPTDP-master/utils/converter.py")
+        # jPTDP_model_path = os.path.join(cwd, RE_dir, "jPTDP-master/sample/model256")
+        # jPTDP_params_path = os.path.join(cwd, RE_dir, "jPTDP-master/sample/model256.params")
         for id in input_ids:
             line_count = 0
-            with open(os.path.join(input_dir, id + ".txt"), 'r') as input_file:
-                os.system("mkdir " + os.path.join(input_dir, id))
-                for line in input_file:
-                    line_strip = clean_str(line.strip())
-                    if line_strip != "" and not line_strip.isspace():
-                        line_path = os.path.join(input_dir, id, str(line_count) + ".txt")
-                        with open(line_path, 'w') as line_file:
-                            line_file.write(line_strip)
-
-                        parse_input = os.path.join(input_dir, id, str(line_count) + ".txt.conllu")
-                        parse_output = parse_input + ".pred"
-
-                        subprocess.call([python_bin, converter_file, line_path])
-                        subprocess.call([python_bin, script_file, "--predict", \
-                            "--model", jPTDP_model_path, "--params", jPTDP_params_path, \
-                            "--test", parse_input, "--outdir", input_dir, "--output", parse_output])
-
-                        line_count += 1
+            subprocess.call([python_bin, script_file, os.path.join(input_dir, id + ".txt")])
+            # with open(os.path.join(input_dir, id + ".txt"), 'r') as input_file:
+            #     # os.system("mkdir " + os.path.join(input_dir, id))
+            #     subprocess.call(["mkdir", os.path.join(input_dir, id)])
+            #     for line in input_file:
+            #         line_strip = clean_str(line.strip())
+            #         if line_strip != "" and not line_strip.isspace():
+            #             line_path = os.path.join(input_dir, id, str(line_count) + ".txt")
+            #             with open(line_path, 'w') as line_file:
+            #                 line_file.write(line_strip)
+            #
+            #             parse_input = os.path.join(input_dir, id, str(line_count) + ".txt.conllu")
+            #             parse_output = parse_input + ".pred"
+            #
+            #             subprocess.call([python_bin, converter_file, line_path])
+            #             subprocess.call([python_bin, script_file, "--predict", \
+            #                 "--model", jPTDP_model_path, "--params", jPTDP_params_path, \
+            #                 "--test", parse_input, "--outdir", input_dir, "--output", parse_output])
+            #
+            #             line_count += 1
 
     if PIPELINE_PARTS[2]:
         SDP_dir = "SDP"
