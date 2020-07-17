@@ -8,12 +8,12 @@ Example:
 ![Example](images/brat_stn.png)
 
 ## Dependencies
-tensorflow 2.2.0 <br>
+Tensorflow 2.2.0 <br>
 SpaCy <br>
 NumPy
 
 ## Install
-Package: https://pypi.org/project/extract-sfm/1.0/
+Package: https://pypi.org/project/extract-sfm/
 ```shell
 $ pip install extract_sfm
 ```
@@ -33,16 +33,33 @@ Then run the python file. This may take a while to finish.
 
 ### Method 2
 
-1. Download this Github repository
-2. Unzip the file RE/jPTDP-master.zip
-3. Under the project root directory, run the python script
+Download this Github repository
+Under the project root directory, run the python script
 
 ```shell
 $ python pipeline.py /PATH/TO/DIRECTORY/OF/INPUT/FILES
 ```
 > Note: Use absolute path.
 
-## NER
+
+## Website
+1. Copy NER_v2, RE, pipeline.py into the "SERVER/KGE" directory
+2. Install npm dependencies under the "SERVER" directory: express, path, multer
+```
+  $ npm install <package name>
+```
+3. Run the server by typing in:
+```
+  $ node server.js
+```
+
+> Note: Cannot have [space] character in the path to the website's root directory
+
+![Example](images/website.jpeg)
+
+
+
+## NER Documentation
 ```
 TRAINING
   Dataset:
@@ -79,7 +96,7 @@ TRAINING
     eval_class.py: get precision, recall and f1 score for each class
 
     Other files are from https://github.com/guillaumegenthial/tf_ner
-      train.py, interact.py, masked_conv.py, SFM_STARTER/build_vocab.py, SFM_STARTER/build_glove.py
+      train.py, tf_metrics.py, SFM_STARTER/build_vocab.py, SFM_STARTER/build_glove.py
 
 PREDICTING
   Usage:
@@ -89,8 +106,16 @@ PREDICTING
     ner.py: get BRAT format prediction for a text file.
 ```
 
-## RE
+## RE Documentation
 ```
+jPTDP:
+  Before running the following 3 methods, you need to run a dependency parser first, which some methods relies on.
+  Usage: Go to the jPTDP directory and run
+    $ python fast_parse.py <path_to_txt>.txt
+  The output will be put along side with the input text file in a directory whose name is same as the text file.
+
+
+
 --- METHOD 1: nearest person:
     Assign the non-person name entities to the nearest person that is behind the name entities.
 
@@ -101,6 +126,8 @@ PREDICTING
       2. To generate annotations for a set of text file under <directory>
         Set "output_dir" in pipeline.sh to <directory> and run:
         $ source pipeline.sh
+
+
 
 --- METHOD 2: dependency parsing
     Assign the non-person name entities to the closest person where distance is the length of the dependency path between the name entity and the person
@@ -113,9 +140,11 @@ PREDICTING
       2. To generate annotations for a set of text file under <directory>
         $ source pipeline.sh <directory>
 
+
+
 --- METHOD 3: neural networks
     Use dependency path and its distance as features to predict which person in the sentence is the best option
-    The best model is saved in "model_85.h5"
+    The best model is saved in "model_86.h5"
 
     Usage:
       Predictions are made on files in "pred_path" and are written in place, "pred_path" can be set in config.py
