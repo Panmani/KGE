@@ -56,4 +56,4 @@ $ python pipeline.py /PATH/TO/DIRECTORY/OF/INPUT/FILES
   $ node server.js
 ```
 
-![Example](images/website.jpeg)
+![Example](images/website.png)
