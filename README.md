@@ -57,3 +57,7 @@ $ python pipeline.py /PATH/TO/DIRECTORY/OF/INPUT/FILES
 ```
 
 ![Example](images/website.png)
+
+
+## Documentation
+The documentation for NER and RE is stored in: [doc.txt](doc.txt)
