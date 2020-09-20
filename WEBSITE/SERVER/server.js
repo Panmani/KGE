@@ -4,19 +4,18 @@ var path = require('path');
 var multer  = require('multer');
 var fs = require('fs');
 const { exec } = require("child_process");
-// var upload = multer({ dest: 'uploads/' });
 var bodyParser=require('body-parser');
 
-// app.use(bodyParser());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+
 var txt_count = 0;
 var doc_size_limit = 4 * 1024;
-
 var UPLOAD_DIR = 'UPLOADs';
 var TEXTBOX_DIR = "TEXTBOX";
+var EXAMPLE_DIR = "EXAMPLES"
 var SDP_DIR = "SDP";
 var NN_DIR = "NN";
 var upload = multer({
@@ -63,8 +62,6 @@ app.post('/upload', upload.single('inputfile'), function (req, res, next) {
     res.status(415)
     return res.end(req.fileValidationError);
   } else {
-    // res.send('Upload successful!')
-
     // File ID, Original ID
     var fid = req.file.filename;
     var oid = req.file.originalname.slice(0, -4)
@@ -76,7 +73,6 @@ app.post('/upload', upload.single('inputfile'), function (req, res, next) {
     command += "mv {0} {1} ; ".format(UPLOAD_DIR + "/" + txt_filename, input_buffer);
     command += "cd KGE ; ";
     command += "python pipeline.py {0} ; ".format(path.join(cwd, input_buffer));
-    // command += "mv -r {0}".format(path.join(input_buffer, oid));
     command += "cd RE/utils ; "
     command += "python ann_json.py {0} {1} {2} ; ".format(
         path.join(cwd, input_buffer, SDP_DIR, txt_filename),
@@ -107,6 +103,8 @@ app.post('/upload', upload.single('inputfile'), function (req, res, next) {
         var res_json = {
           "json_SDP" : json_SDP,
           "json_NN" : json_NN,
+          "input_buffer" : input_buffer,
+          "oid" : oid,
         };
         res.json(res_json);
     });
@@ -121,11 +119,6 @@ app.post('/upload_txt', function(req, res) {
 
   var doc = req.body.txtbox;
   fs.writeFileSync(TEXTBOX_DIR + "/" + cur_id + '.txt', doc);
-  // var stream = fs.createWriteStream('/UPLOADs/TEXTBOX/' + cur_id);
-  // stream.once('open', function(fd) {
-  //   stream.write(req.body.txtbox);
-  //   stream.end();
-  // });
 
   // File ID, Original ID
   var fid = cur_id;
@@ -133,12 +126,10 @@ app.post('/upload_txt', function(req, res) {
   var txt_filename = oid + ".txt";
   var input_buffer = TEXTBOX_DIR + "/" + fid;
   var cwd = process.cwd();
-  // var command = "mv {0} {1} ; ".format(input_buffer, TEXTBOX_DIR + "/" + txt_filename);
   var command = "mkdir {0} ; ".format(input_buffer);
   command += "mv {0} {1} ; ".format(TEXTBOX_DIR + "/" + txt_filename, input_buffer);
   command += "cd KGE ; ";
   command += "python pipeline.py {0} ; ".format(path.join(cwd, input_buffer));
-  // command += "mv -r {0}".format(path.join(input_buffer, oid));
   command += "cd RE/utils ; "
   command += "python ann_json.py {0} {1} {2} ; ".format(
       path.join(cwd, input_buffer, SDP_DIR, txt_filename),
@@ -169,10 +160,38 @@ app.post('/upload_txt', function(req, res) {
       var res_json = {
         "json_SDP" : json_SDP,
         "json_NN" : json_NN,
+        "input_buffer" : input_buffer,
+        "oid" : oid,
       };
       res.json(res_json);
   });
 
+});
+
+app.post('/get_example', function(req, res) {
+  var cwd = process.cwd();
+  var oid = req.body.ex_num.toString();
+  var dir_name = "ex" + oid;
+  var input_buffer = EXAMPLE_DIR + "/" + dir_name;
+  console.log(input_buffer);
+
+  var json_path_SDP = path.join(cwd, input_buffer, SDP_DIR, oid + '.json');
+  var json_SDP = JSON.parse(fs.readFileSync(json_path_SDP, 'utf8'));
+
+  var json_path_NN = path.join(cwd, input_buffer, NN_DIR, oid + '.json');
+  var json_NN = JSON.parse(fs.readFileSync(json_path_NN, 'utf8'));
+
+  var res_json = {
+    "json_SDP" : json_SDP,
+    "json_NN" : json_NN,
+  };
+  res.json(res_json);
+});
+
+app.get('/download/', function(req, res){
+  const file_path = req.query.file_path;
+  console.log("Download file request @ " + file_path);
+  res.download(file_path); // Set disposition and send it.
 });
 
 // viewed at http://localhost:3000

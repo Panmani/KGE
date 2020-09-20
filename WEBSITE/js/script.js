@@ -66,10 +66,13 @@ var cur_NN_data = {
 var webFontURLs = "js/";
 var doc_size_limit = 1 * 1024;
 var kge_time_has_alerted = false;
+var input_buffer;
+var oid;
 
 function input_too_large_msg(filesize) {
+  var size_limit_in_kb = doc_size_limit / 1024;
   return "The document size is: " + filesize.toString() + " Bytes\n" +
-        "You can only upload one text file less than 1KB!\n" +
+        "You can only upload one text file less than " + size_limit_in_kb.toString() + "KB!\n" +
         "Download the algorithm at \n" +
         "Run it locally with no file size limit and batch input support!";
 }
@@ -130,7 +133,7 @@ $(document).ready(function(e){
 
     var dispatcher_NN;
     head.ready(function() {
-        dispatcher_NN = Util.embed('NN_graph', annData, cur_SDP_data, webFontURLs);
+        dispatcher_NN = Util.embed('NN_graph', annData, cur_NN_data, webFontURLs);
     });
 
     $( "#SDP_graph" ).change(function() {
@@ -161,6 +164,8 @@ $(document).ready(function(e){
                   cur_NN_data = res['json_NN'];
                   dispatcher_SDP.post('requestRenderData', [cur_SDP_data]);
                   dispatcher_NN.post('requestRenderData', [cur_NN_data]);
+                  input_buffer = res['input_buffer'];
+                  oid = res['oid'];
               },
               error: function (e) {
                 alert(e.responseText);
@@ -188,6 +193,8 @@ $(document).ready(function(e){
                   cur_NN_data = res['json_NN'];
                   dispatcher_SDP.post('requestRenderData', [cur_SDP_data]);
                   dispatcher_NN.post('requestRenderData', [cur_NN_data]);
+                  input_buffer = res['input_buffer'];
+                  oid = res['oid'];
               },
               error: function (e) {
                 alert(e.responseText);
@@ -238,6 +245,127 @@ $(document).ready(function(e){
     $( window ).resize(function() {
       dispatcher_SDP.post('requestRenderData', [cur_SDP_data]);
       dispatcher_NN.post('requestRenderData', [cur_NN_data]);
+    });
+
+    // ================= Examples =================
+    $("#ex1").click(function(){
+      $.ajax({
+          type: "POST",
+          url: "/get_example",
+          data: {"ex_num" : 1},
+          dataType: "json",
+          success: function(res){
+              end_processing();
+              // cur_SDP_data = res['json_SDP'];
+              // cur_NN_data = res['json_NN'];
+              // dispatcher_SDP.post('requestRenderData', [cur_SDP_data]);
+              // dispatcher_NN.post('requestRenderData', [cur_NN_data]);
+              var text = res['json_SDP']['text'];
+              $("#input_txtbox").val(text);
+          },
+          error: function (e) {
+            alert(e.responseText);
+          }
+      });
+    });
+
+    $("#ex2").click(function(){
+      $.ajax({
+          type: "POST",
+          url: "/get_example",
+          data: {"ex_num" : 2},
+          dataType: "json",
+          success: function(res){
+              end_processing();
+              // cur_SDP_data = res['json_SDP'];
+              // cur_NN_data = res['json_NN'];
+              // dispatcher_SDP.post('requestRenderData', [cur_SDP_data]);
+              // dispatcher_NN.post('requestRenderData', [cur_NN_data]);
+              var text = res['json_SDP']['text'];
+              $("#input_txtbox").val(text);
+          },
+          error: function (e) {
+            alert(e.responseText);
+          }
+      });
+    });
+
+    $("#ex3").click(function(){
+      $.ajax({
+          type: "POST",
+          url: "/get_example",
+          data: {"ex_num" : 3},
+          dataType: "json",
+          success: function(res){
+              end_processing();
+              // cur_SDP_data = res['json_SDP'];
+              // cur_NN_data = res['json_NN'];
+              // dispatcher_SDP.post('requestRenderData', [cur_SDP_data]);
+              // dispatcher_NN.post('requestRenderData', [cur_NN_data]);
+              var text = res['json_SDP']['text'];
+              $("#input_txtbox").val(text);
+          },
+          error: function (e) {
+            alert(e.responseText);
+          }
+      });
+    });
+
+    $(".dropdown-item").click(function() {
+      $("#home").css("display", "block");
+      $("#about").css("display", "none");
+    });
+
+    $(".kge_title").click(function() {
+      $("#home").css("display", "block");
+      $("#about").css("display", "none");
+    });
+
+    $("#about_nav").click(function() {
+      $("#home").css("display", "none");
+      $("#about").css("display", "block");
+    });
+
+    // $("#download_sdp_ann").click(function(){
+    //   $.ajax({
+    //       type: "POST",
+    //       url: "/download",
+    //       data: {"input_buffer" : input_buffer,
+    //               "oid" : oid,
+    //               "method" : "SDP",
+    //               "txt_ann" : "ann"},
+    //       dataType: "json",
+    //       success: function(res){
+    //         console.log("Download");
+    //       },
+    //       error: function (e) {
+    //         alert(e.responseText);
+    //       }
+    //   });
+    // });
+
+    $('#download_sdp_ann').click(function(e) {
+        e.preventDefault();
+        console.log(input_buffer);
+        var file_url = "download/?file_path=" + input_buffer + '/SDP/' + oid + ".ann";
+        console.log(file_url);
+        window.open(file_url);
+    });
+
+    $('#download_nn_ann').click(function(e) {
+        e.preventDefault();
+        console.log(input_buffer);
+        var file_url = "download/?file_path=" + input_buffer + '/NN/' + oid + ".ann";
+        console.log(file_url);
+        window.open(file_url);
+    });
+
+    $('#download_txt').click(function(e) {
+        e.preventDefault();
+        console.log(input_buffer);
+        var file_url = "download/?file_path=" + input_buffer + '/SDP/' + oid + ".txt";
+        console.log(file_url);
+        window.open(file_url);
     });
 
 });

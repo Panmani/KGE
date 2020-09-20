@@ -4,6 +4,91 @@
     margin: 0;
 }
 
+/* ===== NAVIGATION ======*/
+/*
+.navbar {
+    border: 0;
+    z-index: 9999;
+    letter-spacing: 4px;
+
+}
+.logo {
+    display: block;
+    height: auto;
+    width: 52px;
+    padding-top: 5px;
+    margin-right: 15px;
+}
+
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+.navbar .nav > li > a {
+  line-height: 50px;
+}
+
+.navbar-header h1 {
+    letter-spacing: 1px;
+    color: black !important;
+    font-family: 'Lobster Two', cursive;
+}
+
+.navbar li a, .navbar {
+    color: black !important;
+    font-size: 12px;
+    transition: all 0.6s 0s;
+}
+
+.navbar-toggle {
+    background-color: transparent !important;
+    border: 0;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: red !important;
+}
+
+*/
+.navbar {
+  background-color: #425263 !important;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: rgb(255,255,255);
+}
+
+.nav-link {
+  color : white !important;
+}
+
+#navbarNavDropdown {
+  float: left;
+  clear: left;
+}
+
+
+/* content */
+#textarea_explanation {
+  padding : 15px 15px 5px 15px;
+}
+
+a.text_generator {
+  text-decoration: underline;
+  color: grey;
+}
+
+a.text_generator:hover {
+  color: #becfd5;
+  cursor: pointer;
+}
+
 p {
     display: block;
     margin-block-start: 1em;
@@ -21,9 +106,8 @@ p {
 }
 
 .kge_title {
-  color: white;
-  background-color: #425263;
-  padding : 5px 50px 5px 50px;
+  color: white !important;
+  padding : 5px 20px 5px 20px;
   font-size: 2em;
   font-family : "Open Sans";
 }
@@ -125,13 +209,31 @@ label {
 }
 
 #processing_kge {
-  display : block
+  display : block;
 }
 
 #extract_btn {
-  display : none
+  display : none;
 }
 
 #input_form {
-  display : none
+  display : none;
+}
+
+#about {
+  display: none;
+}
+
+#download_txt{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#wrapper {
+  width: 100%;
+  height: 50px;
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

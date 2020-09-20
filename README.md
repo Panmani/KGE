@@ -55,7 +55,7 @@ $ python pipeline.py /PATH/TO/DIRECTORY/OF/INPUT/FILES
 
 > Note: Cannot have [space] character in the path to the website's root directory
 
-![Example](images/website.jpeg)
+![Example](images/website.png)
 
 
 
