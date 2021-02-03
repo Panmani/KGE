@@ -30,7 +30,7 @@ Create a python file and write:
 ```python
 import extract_sfm
 
-extract_sfm.extract("/PATH/TO/DIRECTORY/OF/INPUT/FILES")
+extract_sfm.extract("/ABSOLUTE/PATH/TO/DIRECTORY/OF/INPUT/FILES")
 ```
 Then run the python file. This may take a while to finish.
 
@@ -40,7 +40,7 @@ Download this Github repository
 Under the project root directory, run the python script
 
 ```shell
-$ python pipeline.py /PATH/TO/DIRECTORY/OF/INPUT/FILES
+$ python pipeline.py /ABSOLUTE/PATH/TO/DIRECTORY/OF/INPUT/FILES
 ```
 > Note: Use absolute path.
 
