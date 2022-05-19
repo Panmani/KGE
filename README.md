@@ -7,6 +7,10 @@ This pipeline consists of two major components: Name Entity Recognition and Rela
 Example:
 ![Example](images/brat_stn.png)
 
+## Dataset
+SFM NLP starter dataset:
+https://github.com/security-force-monitor/nlp_starter_dataset
+
 ## Dependencies
 Tensorflow 2.2.0 <br>
 Tensorflow-addons <br>
@@ -30,7 +34,7 @@ Create a python file and write:
 ```python
 import extract_sfm
 
-extract_sfm.extract("/ABSOLUTE/PATH/TO/DIRECTORY/OF/INPUT/FILES")
+extract_sfm.extract("/PATH/TO/DIRECTORY/OF/INPUT/FILES")
 ```
 Then run the python file. This may take a while to finish.
 
@@ -40,10 +44,9 @@ Download this Github repository
 Under the project root directory, run the python script
 
 ```shell
-$ python pipeline.py /ABSOLUTE/PATH/TO/DIRECTORY/OF/INPUT/FILES
+$ python pipeline.py /PATH/TO/DIRECTORY/OF/INPUT/FILES
 ```
-> Note 1: Use absolute path.<br>
-> Note 2: Using time_pipeline.py instead of pipeline.py will produce an additional "time.txt" file, which includes how much time each component of the pipeline takes to run.
+> Note: Use absolute path.
 
 
 ## Website
